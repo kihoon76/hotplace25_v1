@@ -1,0 +1,264 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				상세보기
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body dvGyeongmaeDetail">
+			
+			<div class="unit">
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:10%;">
+							<col style="width:15%;">
+
+							<col style="width:10%;">
+							<col style="width:15%;">
+
+							<col style="width:10%;">
+							<col style="width:15%;">
+
+							<col style="width:10%;">
+							<col style="width:15%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>사건번호</th>
+								<td><span id="gDsageonbeonho"></span></td>
+
+								<th>담당</th>
+								<td><span id="gDdamdang"></span></td>
+
+								<th>사건접수</th>
+								<td><span id="gDsageonjeobsuil"></span></td>
+
+								<th>물건종류</th>
+								<td><span id="gDyongdo"></span></td>
+							</tr>
+							<tr>
+								<th>소재지</th>
+								<td colspan="3"><span id="gDsojaeji"></span></td>
+
+								<th>물건비고</th>
+								<td colspan="3"><span id="gDbigo"></span></td>
+							</tr>
+							<tr>
+								<th>매각기일</th>
+								<td><span id="gDmaegaggiil"></span></td>
+
+								<th>입찰방법</th>
+								<td><span id="gDibchalbangbeob"></span></td>
+
+								<th>유찰횟수</th>
+								<td><span id="gDyuchal"></span></td>
+
+								<th>청구금액</th>
+								<td><span id="gDcheonggu"></span></td>
+							</tr>
+							<tr>
+								<th>감정평가액</th>
+								<td><span id="gDgamjeongpyeongga"></span></td>
+
+								<th>최저매각가격</th>
+								<td><san id="gDminmaegaggagyeog"></span></td>
+
+								<th>배당요구종기</th>
+								<td colspan="3"><span id="gDbaedangyogu"></span></td>
+							</tr>
+							<tr>
+								<th>
+									전경도(<span id="gDjeongyeongdo">0</span>)<br/>
+									지적도(<span id="gDjijeogdo">0</span>)<br/>
+									위치도(<span id="gDwichido">0</span>)<br/>
+									관련사진(<span id="gDgwanlyeonsajin">0</span>)<br/>
+									내부구조(<span id="gDnaebugujo">0</span>)<br/>
+									기타(<span id="gDetc">0</span>)<br/>
+								</td>
+								<td colspan="7">
+									<div class="touchSliderWrap">
+										<div id="gDimages" class="touchSlider" style="height:160px;">
+										</div>
+										<div class="tsBtnArea">
+											<button type="button" class="btn_prev"><span class="hidden">prev</span></button>
+											<button type="button" class="btn_next"><span class="hidden">next</span></button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			
+			<!-- ----------------------- -->
+			<!-- 기일내역 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">기일내역</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>기일</th>
+								<th>기일종류</th>
+								<th>기일장소</th>
+								<th>최저매각가격</th>
+								<th>기일결과</th>
+							</tr>
+						</thead>
+						<tbody id="gDgiilhistory"></tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 목록내역 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">목록내역</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:100px;">
+							<col style="width:150px;">
+							<col style=";">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>목록번호</th>
+								<th>목록구분</th>
+								<th>상세내역</th>
+							</tr>
+						</thead>
+						<tbody id="gDlisthistory"></tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 인근매각물건사례 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">인근매각물건사례</span>
+				</div>
+				<div class="unit_cont tabWrap dvMaegagmulgeon">
+					<div class="tab-head">
+						<ul class="nav-tabs">
+							<li class="tabLink active">
+								<button href="#tabMaegagmulgeon01" data-toggle="tab"><span class="text">인근매각통계</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabMaegagmulgeon02" data-toggle="tab"><span class="text">인근매각물건</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabMaegagmulgeon03" data-toggle="tab"><span class="text">인근진행물건</span></button>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-content bgWhite" style="min-height:;"> <!-- 해당 부분은 실제ㅔ 컨텐츠를 넣어보고 수정보완함 -->
+
+					<!-- ----------------------- -->
+					<!-- 인근매각통계 -->
+					<div id="tabMaegagmulgeon01" class="tab-pane active">	
+						<table id="" class="tableStyle gridStyle center">
+							<colgroup>
+								<col style="width:15%;">
+								<col style="width:15%;">
+								<col style="width:25%;">
+								<col style="width:25%;">
+								<col style="width:10%;">
+								<col style="width:10%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>기간</th>
+									<th>매각건수</th>
+									<th>평균감정가</th>
+									<th>평균매각가</th>
+									<th>매각가율</th>
+									<th>평균유찰횟수</th>
+								</tr>
+							</thead>
+							<tbody id="gDmaegagTonggyes"></tbody>
+						</table>
+					</div>
+
+					
+					<!-- ----------------------- -->
+					<!-- 인근매각물건 -->
+					<div id="tabMaegagmulgeon02" class="tab-pane">
+						<table class="tableStyle gridStyle center">
+							<colgroup>
+								<col style="width:25%;">
+								<col style="width:10%;">
+								<col style="width:25%;">
+								<col style="width:15%;">
+								<col style="width:10%;">
+								<col style="width:15%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>사건번호</th>
+									<th>용도</th>
+									<th>소재지 및 내역</th>
+									<th>감정평가액</th>
+									<th>매각월</th>
+									<th>매각대금</th>
+								</tr>
+							</thead>
+							<tbody id="gDmaegagmulgeon"></tbody>
+						</table>
+					</div>
+
+
+					<!-- ----------------------- -->
+					<!-- 인근진행물건 -->
+					<div id="tabMaegagmulgeon03" class="tab-pane">	
+						<table id="" class="tableStyle gridStyle center">
+							<colgroup>
+								<col style="width:15%;">
+								<col style="width:10%;">
+								<col style="">
+								<col style="width:10%;">
+								<col style="width:10%;">
+								<col style="width:10%;">
+								<col style="width:10%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>사건번호</th>
+									<th>물건번호 <br/> 용도</th>
+									<th>소재지 및 내역</th>
+									<th>비고</th>
+									<th>감정평가액 <br/> 최저매각가격</th>
+									<th>담당계 <br/> 매각기일 <br/> (입찰기간)</th>
+									<th>진행 상태</th>
+								</tr>
+							</thead>
+							<tbody id="gDjinhaengmulgeon"></tbody>
+						</table>
+					</div>
+				</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

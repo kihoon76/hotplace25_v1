@@ -1,0 +1,81 @@
+textarea {resize:none;}
+.zoomImg {width:2000px;	height:2000px !important; max-height:2000px !important;}
+.spanJangeagongji {color: red; padding-top: 15px; font-size: 20px;}
+
+
+.ui-tabs.ui-tabs-vertical {
+    padding: 0;
+    width: 42em;
+}
+.ui-tabs.ui-tabs-vertical .ui-widget-header {
+    border: none;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav {
+    float: left;
+    width: 10em;
+    background: #CCC;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid gray;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav li {
+    clear: left;
+    width: 100%;
+    margin: 0.2em 0;
+    border: 1px solid gray;
+    border-width: 1px 0 1px 1px;
+    border-radius: 4px 0 0 4px;
+    overflow: hidden;
+    position: relative;
+    right: -2px;
+    z-index: 2;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav li a {
+    display: block;
+    width: 100%;
+    padding: 0.6em 1em;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav li a:hover {
+    cursor: pointer;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+    margin-bottom: 0.2em;
+    padding-bottom: 0;
+    border-right: 1px solid white;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav li:last-child {
+    margin-bottom: 10px;
+}
+.ui-tabs.ui-tabs-vertical .ui-tabs-panel {
+    float: left;
+    width: 28em;
+    border-left: 1px solid gray;
+    border-radius: 0;
+    position: relative;
+    left: -1px;
+}
+
+#dvPayment .tooltip-inner {min-width:400px; width:400px; text-align:left; padding:10px 20px 10px 20px;}
+.payment_info {color:#0000ff; font-weight:bold; font-size:1.2em;}
+
+.coupon {font-size:1em;}
+
+/*
+HP지수 메뉴
+*/
+.hpbold {font-weight:900; font-size:1.2em;}
+.hpdefinition {line-height: 1.8em;}
+.hpsub {color:darkgray;font-size:0.85em;}
+
+/*수지분석 hp*/
+.hpIndexCont {clear:both; overflow:auto; border:1px solid #ccc; background:#f9f9f9;}
+.hpIndexCont td {padding:0 0px; text-align:left;}
+.hpIndexCont .textArea {padding:25px 30px;}
+.hpIndexCont .indexArea {padding:25px 35px 25px 0; text-align:right;}
+.hpIndexCont .text  {width:100%; font-size:13px; font-weight:500; padding:0 0 10px 0; line-height:1.6em;}
+.hpIndexCont .sText {width:100%; font-size:11px; font-weight:500; color:#666; padding:0;}
+
+.hpIndexCont .indexArea .text        {font-size:15px;}
+.hpIndexCont .indexArea .text .bFont {font-size:36px; color:#3192e7; font-weight:bold;}
+.hpIndexCont .indexArea .sText {display:block; padding:5px 0 0 0;}
+
+.skippr-nav-element-block {width: 40px;}

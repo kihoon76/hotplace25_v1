@@ -1,0 +1,58 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				토지 이용 규제 현황 보기
+				<span class="sText">( 소재지 : {{address}} )</span>
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div id="dvSpotTojiUseLimit" class="tabWrap dvTojiUseRegul">
+				
+				<div class="tab-head">
+					<ul class="nav-tabs">
+						<li class="tabLink active">
+							<button href="#tabTojiUseLimit01" data-toggle="tab" data-tab-num="1"><span class="text">기본정보</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabTojiUseLimit02" data-toggle="tab" data-tab-num="2"><span class="text">토지대장</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabTojiUseLimit03" data-toggle="tab" data-tab-num="3"><span class="text">건축물대장</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabTojiUseLimit04" data-toggle="tab" data-tab-num="4"><span class="text">토지이용계획</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabTojiUseLimit05" data-toggle="tab" data-tab-num="5"><span class="text">개별공시지가</span></button>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tab-content" style="min-height:740px;"> 
+					<!-- 기본정보 -->
+					<div id="tabTojiUseLimit01" class="tab-pane active"></div>
+					<!-- 토지대장 -->
+					<div id="tabTojiUseLimit02" class="tab-pane"></div>
+					<!-- 건축물대장 -->
+					<div id="tabTojiUseLimit03" class="tab-pane"></div>
+					<!-- 토지이용계획 -->
+					<div id="tabTojiUseLimit04" class="tab-pane"></div>
+					<!-- 개별공시지가 -->
+					<div id="tabTojiUseLimit05" class="tab-pane"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--
+		<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-dismiss="modal">등록</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">취소</button>
+		</div>
+		-->
+	</div>
+</div>

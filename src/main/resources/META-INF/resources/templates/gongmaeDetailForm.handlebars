@@ -1,0 +1,428 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				상세보기
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body dvGongmaeDetail detailWrap">
+			
+			<!-- ----------------------- -->
+			<div class="unit">
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:13%;">
+							<col style="width:20.33%;">
+
+							<col style="width:13%;">
+							<col style="width:20.33%;">
+
+							<col style="width:13%;">
+							<col style="width:20.33%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>처분방식 / 자산구분</th>
+								<td><span id="gongDcheoboonJasan"></span></td>
+
+								<th>용도</th>
+								<td><span id="gongDyongdo"></span></td>
+
+								<th>면적</th>
+								<td><span id="gongDarea"></span></td>
+							</tr>
+							<tr>
+
+								<th>감정평가금액</th>
+								<td><span id="gongDgamjeongga"></span></td>
+
+								<th>입찰방식</th>
+								<td><span id="gongDibchalMethod"></span></td>
+
+								<th>입찰기간 (회차/차수)</th>
+								<td><span id="gongDibchalPeriodNumber"></span></td>
+							</tr>
+							<tr>
+								<th>유찰횟수</th>
+								<td><span id="gongDyuchal"></span>회 </td>
+
+								<th>집행기관</th>
+								<td><span id="gongDjibhaengGigwan"></span></td>
+
+								<th>담당자정보</th>
+								<td>-</td>
+							</tr>
+							<tr>
+								<th>최저입찰가(예정금액)</td>
+								<td colspan="5"><span id="gongDminIbchalga" class="bold color_blue font16"></span></td>
+							</tr>
+							<tr>
+								<th>
+									사진(<span id="gongmaeImageCnt">0</span>)
+								</th>
+								<td colspan="5">
+									<div class="touchSliderWrap">
+										<div id="gongmaeimages" class="touchSlider" style="height:160px;">
+										</div>
+										<div class="tsBtnArea">
+											<button type="button" class="btn_prev"><span class="hidden">prev</span></button>
+											<button type="button" class="btn_next"><span class="hidden">next</span></button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+
+
+
+			<!-- ----------------------- -->
+			<!-- tab 부분 -->
+			<div class="unit mgT20">
+				<div class="unit_cont tabWrap dvGongmaeTab">
+					
+					
+					<div class="tab-head">
+						<ul class="nav-tabs">
+							<li class="tabLink active">
+								<button href="#tabGongmae01" data-toggle="tab"><span class="text">물건 세부 정보</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabGongmae02" data-toggle="tab"><span class="text">입찰 정보</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabGongmae03" data-toggle="tab"><span class="text">시세 및 낙찰 통계</span></button>
+							</li>
+						</ul>
+					</div>
+
+
+					<div class="tab-content" style="min-height:;"> 
+
+						<!-- tab-pane ----------------------- -->
+						<!-- ----------------------- -->
+						<!-- 물건 세부 정보 -->
+						<div id="tabGongmae01" class="tab-pane active">	
+
+							<!-- 면적 정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">면적 정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:10%;">
+											<col style="width:20%;">
+											<col style="width:*%;">
+											<col style="width:20%;">
+											<col style="width:20%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>종별(지목)</th>
+												<th>면적</th>
+												<th>지분</th>
+												<th>비고</th> 
+											</tr>
+										</thead>
+										<tbody id="gongDmulgeonDetailArea"></tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 위치 및 이용현황 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">위치 및 이용현황</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:10%;">
+											<col style="width:10%;">
+											<col style="width:*;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="2">소재지</th>
+												<th>지번</th>
+												<td><span id="gongDmulgeonAddress"></span></td>
+											</tr>
+											<tr>
+												<th>도로명</th>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:20%;">
+											<col style="width:*;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>위치 및 부근현황</th>
+												<td><span id="gongDwichiBugeun"></span></td>
+											</tr>
+											<tr>
+												<th>이용현황</th>
+												<td><span id="gongDuse"></span></td>
+											</tr>
+											<tr>
+												<th>기타사항</th>
+												<td><span id="gongDetc"></span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 감정평가정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">감정평가정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:25%;">
+											<col style="width:25%;">
+											<col style="width:*%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>감정평가기관</th>
+												<th>평가일</th>
+												<th>평가금액(원)</th>
+											</tr>
+										</thead>
+										<tbody id="gongDmulgeonDetailGamjeong"></tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 명도이전책임 및 부대조건 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">명도이전책임 및 부대조건</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:20%;">
+											<col style="width:*;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>명도책임</th>
+												<td><span id="gongDmyeongdoChaegim"></span></td>
+											</tr>
+											<tr>
+												<th>부대조건</th>
+												<td><span id="gongDbudaeJogeon"></span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+							
+						</div>
+						<!-- ----------------------- -->
+						<!-- ----------------------- -->
+
+						
+						<!-- tab-pane ----------------------- -->
+						<!-- ----------------------- -->
+						<!-- 입찰 정보 -->
+						<div id="tabGongmae02" class="tab-pane">
+							<!-- 입찰 방법 및 입찰 제한 정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">입찰 방법 및 입찰 제한 정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:12%;">
+											<col style="width:38%;">
+
+											<col style="width:12%;">
+											<col style="width:38%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>전자보증서 사용여부</th>
+												<td><span id="gongDjeonjaBojeungseoYN"></span></td>
+												<th>차순위 매수신청<br> 가능여부</th>
+												<td><span id="gongDchasunwiMaesuYN"></span></td>
+											</tr>
+											<tr>
+												<th>공동입찰 가능여부</th>
+												<td><span id="gongDgongdongIbchalYN"></span></td>
+												<th>2인 미만 유찰여부</th>
+												<td><span id="gongDtwoPersonYN"></span></td>
+											</tr>
+											<tr>
+												<th>대리입찰 가능여부</th>
+												<td><span id="gongDdaeliIbchalYN"></span></td>
+												<th>2회 이상 입찰 가능여부</th>
+												<td><span id="gongDtwoTimeYN"></span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 회차별 입찰 정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">회차별 입찰 정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:12%;">
+											<col style="width:9%;">
+											<col style="width:7%;">
+											<col style="width:12%;">
+											<col style="width:15%;">
+											<col style="width:10%;">
+											<col style="width:19%;">
+											<col style="width:*;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>입찰번호</th>
+												<th>회차 / 차수</th>
+												<th>구분</th>
+												<th>대금납부 / 납부기한</th>
+												<th>입찰기간</th>
+												<th>개찰일시</th>
+												<th>개찰장소</th>
+												<th>최저입찰가(원)</th>
+											</tr>
+										</thead>
+										<tbody id="gongDibchalInfoPerHoecha"></tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 첨부파일 -->
+							<!--<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">첨부파일</span>
+								</div>
+								<div class="unit_cont">
+									<ul class="typeListBox fileDownBox">
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 제소전 화해조서작성 동의서.hwp (11.50 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 평면도.hwp (307.00 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 표준 임대차 계약서.hwp (28.00 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 청렴계약이행특수조건(입찰계약시).hwp (23.00 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 공고문(3차).hwp (24.00 KB)</a></li>
+									</ul>
+								</div>
+							</div>-->
+							<!-- //////// -->
+
+						</div>
+						<!-- ----------------------- -->
+						<!-- ----------------------- -->
+
+
+						<!-- tab-pane ----------------------- -->
+						<!-- ----------------------- -->
+						<!-- 시세 및 낙찰 통계 -->
+						<div id="tabGongmae03" class="tab-pane">
+
+							<!-- 인근 낙찰 통계 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">인근 낙찰 통계</span>
+									<span class="etcText">* 해당물건 지역과 용도를 바탕으로 나온 12개월간의 통계입니다.</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:14%;">
+											<col style="width:14%;">
+											<col style="width:14%;">
+											<col style="width:14%;">
+											<col style="width:22%;">
+											<col style="width:22%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th rowspan="2">통계기간</th>
+												<th rowspan="2">부찰건수</th>
+												<th rowspan="2">낙찰건수</th>
+												<th rowspan="2">낙찰율</th>
+												<th colspan="2">낙찰가율</th>
+											</tr>
+											<tr>
+												<th>감정가 대비</th>
+												<th>최저입찰가 대비</th>
+											</tr>
+										</thead>
+										<tbody id="gongDsiseInfoTonggye"></tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 인근 낙찰 물건 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">인근 낙찰 물건</span>
+									<span class="etcText">* 해당물건 지역과 용도를 바탕으로 나온 6개월간의 통계입니다.</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:50px">
+											<col style="width:*">
+											<col style="width:150px">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>물건명</th>
+												<th>낙찰금액(원)</th>
+											</tr>
+										</thead>
+										<tbody id="gongDsiseInfoMulgeon"></tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+						</div>
+						<!-- ----------------------- -->
+						<!-- ----------------------- -->
+
+					</div>
+					
+				</div>
+			</div>
+			<!-- ----------------------- -->
+			<!-- ----------------------- -->
+		</div>
+	</div>
+</div>

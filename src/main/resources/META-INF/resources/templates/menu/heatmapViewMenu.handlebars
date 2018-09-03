@@ -1,0 +1,108 @@
+<div class="headArea">
+	<h2>HeatMap 보기</h2>
+	<button type="button" class="close">
+		<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+	</button>
+</div>
+<div class="bodyArea">
+	<ul class="heatmapList" style="">
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap2" name="hitmap" data-value="GONGSI" data-valid="true" disabled/>
+				<label for="hitmap2" class="labelCh"><em class="text">공시지가</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap3" name="hitmap" data-value="GONGSI_GR" data-valid="true" disabled/>
+				<label for="hitmap3" class="labelCh"><em class="text">공시지가 증가율</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap6" name="hitmap" data-value="BOSANG_MULGEON_GEONSU" data-valid="true" disabled />
+				<label for="hitmap6" class="labelCh"><em class="text">보상물건(건수)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap61" name="hitmap" data-value="BOSANG_MULGEON_AREA" data-valid="true" disabled />
+				<label for="hitmap61" class="labelCh"><em class="text">보상물건(면적)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap8" name="hitmap" data-value="ACCEPT_BUILDING_GEONSU" data-valid="true" disabled />
+				<label for="hitmap8" class="labelCh"><em class="text">건축허가(건수)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap81" name="hitmap" data-value="ACCEPT_BUILDING_AREA" data-valid="true" disabled />
+				<label for="hitmap81" class="labelCh"><em class="text">건축허가(면적)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap9" name="hitmap" data-value="ACCEPT_SALES_GEONSU" data-valid="true" disabled />
+				<label for="hitmap9" class="labelCh"><em class="text">영업허가(건수)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap91" name="hitmap" data-value="ACCEPT_SALES_AREA" data-valid="true" disabled />
+				<label for="hitmap91" class="labelCh"><em class="text">영업허가(면적)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap10" name="hitmap" data-value="SILGEOLAE_GEONSU" data-valid="true" disabled />
+				<label for="hitmap10" class="labelCh"><em class="text">실거래가(건수)</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap101" name="hitmap" data-value="SILGEOLAE_AREA" data-valid="true" disabled />
+				<label for="hitmap101" class="labelCh"><em class="text">실거래가(거래가총계)</em></label>
+			</span>
+		</li>
+	</ul>
+</div>
+<div class="footerEtcText">
+	<div class="tit">[범례]</div>
+	<div style="margin:0 0 10px 0">
+		<table style="width:100%; height:50px;">
+			<colgroup>
+				<col style="width:20%;" />
+				<col style="width:20%;" />
+				<col style="width:20%;" />
+				<col style="width:20%;" />
+				<col style="width:20%;" />
+			</colgroup>
+			<tbody>
+				<tr>
+					<td class="left" colspan="2" style="color:#0000ff;">
+						<i class="ambicon-008_arrow2_left" style="color:#0000ff;"></i>낮음
+					</td>
+					<td></td>
+					<td class="right" colspan="2" style="color:#ff0000;">
+						높음<i class="ambicon-007_arrow2_right" style="color:#ff0000;"></i>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color:#0000ff;">&nbsp;</td>
+					<td style="background-color:#00d9ff;">&nbsp;</td>
+					<td style="background-color:#3cff00;">&nbsp;</td>
+					<td style="background-color:#fffb00">&nbsp;</td>
+					<td style="background-color:#ff0000;">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="tit">[알림]</div>
+	<div class="cont">HeatMap은 전국 3800만여 필지에 대한 데이터를 실시간 분석하기 때문에 다소 시간이 소요됩니다.(컴퓨터 사용 환경에 따라 차이가 있으며, 5~20초 가량이 소요됩니다.)</div>
+</div>
+<div class="footArea">
+	<button type="button" id="btnHeatmapShow" class="btnstyle middle blue" onClick="">HeatMap보기</button>
+	<button type="button" id="btnHeatmapHide" class="btnstyle middle gray" style="display:none;" onClick="">HeatMap끄기</button>
+	<button type="button" class="btnstyle middle gray MENU_CLOSE" data-menu="{{menuName}}">닫기</button>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.mssql.searchMapper">
+	<resultMap id="RM_selectGyeongGongList" type="GyeongGongmaeOut">
+		<result column="PNU"			property="pnu"/>
+		<result column="경공매여부"			property="gyeongGongmae"/>
+		<result column="경매_고유번호"		property="unuGyeongmae"/>
+		<result column="공매_고유번호"		property="unuGongmae"/>
+		<result column="주소"				property="address"/>
+		<result column="지목코드"			property="jimokCode" />
+		<result column="HP등급"			property="hpgrade" />
+		<result column="보상편입여부"		property="bosangPyeonib" />
+		<result column="위도" 			property="lat" />
+		<result column="경도" 			property="lng" />
+	</resultMap>
+	
+	<select id="selectGyeongGongList" parameterType="GyeongGongmaeIn" resultMap="RM_selectGyeongGongList">
+		{ call  [서비스].[dbo].[SEL_경공매검색](
+			#{paramJiyeog, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramMulgeonKind, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramJimok, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramJiboon, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramGamjeongga, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramMinIbchalga, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramGongsi, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramMinIbchalgaR, mode=IN, jdbcType=NVARCHAR, javaType=string}, 
+			#{paramYongdoJiyeog, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramYongdoJigu, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramYongdoGuyeog, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramEtcLawLimit, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramEtcChamgo, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramCityPlan, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramCityPlanStateJeon, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramCityPlanStateJeo, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramCityPlanStateJeob, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{paramBosangPyeonib, mode=IN, jdbcType=NVARCHAR, javaType=string}
+		)}
+	</select>
+	
+	<resultMap id="RM_selectJangmiList" type="ToojaSearchResult">
+		<result column="PNU"			property="pnu"/>
+		<result column="경공매여부"			property="gyeongGongmae"/>
+		<result column="경매_고유번호"		property="unuGyeongmae"/>
+		<result column="공매_고유번호"		property="unuGongmae"/>
+		<result column="주소"				property="address"/>
+		<result column="지목코드"			property="jimokCode" />
+		<result column="HP등급"			property="hpgrade" />
+		<result column="보상편입여부"		property="bosangPyeonib" />
+		<result column="위도" 			property="lat" />
+		<result column="경도" 			property="lng" />
+	</resultMap>
+	
+	<select id="selectJangmiList" statementType="CALLABLE" parameterType="Jangmi" resultMap="RM_selectJangmiList">
+		{ call  [서비스].[dbo].[SEL_장기미집행도시계획시설3](
+			#{cityPlan, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{cityPlanStateJeon, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{cityPlanStateJeo, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{cityPlanStateJeob, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{bosangPyeonib, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{jiyeok, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{jimok, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{gongsi, mode=IN, jdbcType=NVARCHAR, javaType=string}, 
+			#{yongdoJiyeog, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{yongdoJigu, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{yongdoGuyeog, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{etcLawLimit, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{etcChamgo, mode=IN, jdbcType=NVARCHAR, javaType=string}
+		)}
+	</select> 
+	
+	<select id="selectLurisDrawing" parameterType="string" resultType="map">
+		select 고유번호 unu, PNU pnu, CONVERT(varchar(max), 지적도 ,2)  image
+		  from [온나라].[dbo].[온나라PNU] a with (nolock)
+         inner join [온나라_이미지].[dbo].[온나라_지적도] b with (nolock) 
+            on (b.온나라PNU_고유번호 = a.고유번호)
+         where a.PNU = #{pnu}
+	</select>
+	
+	<resultMap id="RM_selectSujiboonseogBase1" type="map">
+		<result column="PNU" 	property="pnu"/>
+		<result column="지목" 	property="jimok"/>
+		<result column="면적" 	property="area"/>
+		<result column="공시지가"  property="gongsi"/>
+		<result column="hp지수"  property="hpIndex"/>
+		<result column="hp등급"  property="hpGrade"/>
+		<result column="hp수지분석"  property="hpSuji"/>
+	</resultMap>
+	<resultMap id="RM_selectSujiboonseogBase2" type="string"></resultMap>
+	<resultMap id="RM_selectSujiboonseogBase3" type="string"></resultMap>
+	<resultMap id="RM_selectSujiboonseogBase4" type="string"></resultMap>
+	<resultMap id="RM_selectSujiboonseogBase5" type="string"></resultMap>
+	
+	<select id="selectSujiboonseogBase" statementType="CALLABLE" parameterType="string"
+			resultMap="RM_selectSujiboonseogBase1,
+					   RM_selectSujiboonseogBase2,
+					   RM_selectSujiboonseogBase3,
+					   RM_selectSujiboonseogBase4,
+					   RM_selectSujiboonseogBase5">
+	{ call [서비스].[dbo].[SEL_수지분석_01](
+		#{pnu, mode=IN, jdbcType=NVARCHAR, javaType=string}
+	)}
+	</select>
+	
+	
+	<resultMap id="RM_selectSujiboonseogGongsiHistory" type="map">
+		<result column="기준년월" property="sYmd"/>
+		<result column="공시지가" property="gongsi"/>
+	</resultMap>
+	
+	<select id="selectSujiboonseogGongsiHistory" statementType="CALLABLE"  resultMap="RM_selectSujiboonseogGongsiHistory">
+	{ call [서비스].[dbo].[SEL_공시지가변동내역_01](
+		#{pnu, mode=IN, jdbcType=NVARCHAR, javaType=string}
+	)}
+	</select>
+	
+	<select id="selectPnuFromAddress" statementType="CALLABLE" resultType="string">
+	{ call [서비스].[dbo].[SEL_풀주소검색] (
+		#{address, mode=IN, jdbcType=NVARCHAR, javaType=string}
+	)}
+	</select>
+
+</mapper>

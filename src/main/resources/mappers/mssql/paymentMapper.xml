@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.mssql.paymentMapper">
+
+	<insert id="insertHotplaceServices"  statementType="CALLABLE" parameterType="Payment">
+		{ call  [웹].[dbo].[USP_이용권한_등록](
+			#{accountId, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{serviceType, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{serviceSubTypes, mode=IN, jdbcType=NVARCHAR, javaType=string}
+		)}
+	</insert>
+	
+	<select id="selectCoupon" parameterType="string" resultType="Coupon">
+		select 쿠폰번호 couponNum, 할인단위 discountUnit, 할인값 discountValue, 사용여부 used
+		  from [웹].[dbo].[발행쿠폰]
+		 where 쿠폰번호 = #{couponNum}
+	</select>
+	
+	<insert id="insertPayment" parameterType="Payment">
+		insert into [웹].[dbo].[결제내역](사용자계정, 결제금액, 쿠폰사용여부, 쿠폰번호, 서비스타입, 서비스서브타입, 입금자명, 결제방법, 카드거래번호)
+		<choose>
+			<when test='"0".equals(couponNum)'>
+		values (#{accountId}, #{sum}, #{useCoupon}, null, #{serviceType}, #{serviceSubTypes}, #{depositor}, #{method}, #{orderNum})
+		  	</when>
+			<otherwise>
+		values (#{accountId}, #{sum}, #{useCoupon}, #{couponNum}, #{serviceType}, #{serviceSubTypes}, #{depositor}, #{method}, #{orderNum})  	
+			</otherwise>
+		</choose>
+		<selectKey resultType="string" keyProperty="key" order="AFTER">
+        	SELECT IDENT_CURRENT('[웹].[dbo].[결제내역]')
+    	</selectKey>  
+	</insert>
+	
+	<insert id="insertCardPaymentLog" parameterType="map">
+		insert into [웹].[dbo].[카드결제내역](주문번호, 내역)
+		values (#{orderNum}, #{log})
+	</insert>
+	
+	<update id="updateCoupon" parameterType="string">
+		update [웹].[dbo].[발행쿠폰]
+		   set 사용여부 = 'Y'
+		 where 쿠폰번호 = #{couponNum}
+	</update>
+	
+	<resultMap id="RM_selectPaymentList" type="Payment" >
+		<result column="일련번호" property="key" javaType="string"/>
+		<result column="결제신청일자" property="applyDate" javaType="string"/>
+		<result column="결제금액" property="sum" javaType="int"/>
+		<result column="쿠폰사용여부" property="useCoupon" javaType="string"/>
+		<result column="쿠폰번호" property="couponNum" javaType="string"/>
+		<result column="할인단위" property="couponUnit" javaType="string"/>
+		<result column="할인값" property="couponValue" javaType="string"/>
+		<result column="서비스타입" property="serviceType" javaType="string"/>
+		<result column="서비스서브타입" property="serviceSubTypes" javaType="string"/>
+		<result column="결제내용" property="applyComment" javaType="string"/>
+		<result column="결제완료여부" property="status" javaType="string"/>
+		<result column="입금자명" property="depositor" javaType="string"/>
+	</resultMap>
+	
+	<select id="selectPaymentList" parameterType="string" resultMap="RM_selectPaymentList">
+		  select 일련번호, 결제신청일자, 결제금액, 쿠폰사용여부, T1.쿠폰번호, 결제완료여부, T2.할인단위, T2.할인값, 입금자명, 
+			case when 서비스타입 = 'ALL' then 
+					case when 서비스서브타입 = 'YEAR' then '전체서비스(연간결제)' 
+					 	 else '전체서비스(월간결제)'
+					end
+				else
+					'개별서비스(' + replace(replace(replace(replace(서비스서브타입, 'ROLE_TOOJA', '투자유망검색'), 'ROLE_GYEONGGONG', '경공매검색'), 'ROLE_MULGEON', '물건보기검색'), 'ROLE_HEATMAP', '히트맵보기') + ')'
+			end 결제내용
+		   from [웹].[dbo].[결제내역] T1
+		   left outer join [웹].[dbo].[발행쿠폰] T2 on T1.[쿠폰번호] = T2.[쿠폰번호]
+		  where 사용자계정 = #{accountId}
+		  order by 결제신청일자 desc
+	</select>
+	
+	<select id="selectCheckPaymentList" parameterType="string" resultType="string">
+		select 일련번호
+		  from [웹].[dbo].[결제내역]
+		 where 사용자계정 = #{accountId}
+		   and 결제완료여부 = 'N'
+	</select>
+	
+	<update id="updatePayment" statementType="CALLABLE" parameterType="map">
+	{ call  [웹].[dbo].[USP_결제확인](
+		#{key, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{paymentDate, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{accountId, mode=IN, jdbcType=VARCHAR, javaType=string}
+	)} 
+	</update>
+	
+	<insert id="insertCardPaymentError" parameterType="map">
+		insert into [웹].[dbo].[카드결제오류로그](사용자아이디, 오류내용)
+		values (#{accountId}, #{err})
+	</insert>
+</mapper>

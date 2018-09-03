@@ -1,0 +1,70 @@
+<div id="dvGongmaeInfoWin" class="mapInnerBox type2"> 
+    <div class="mibHeader"><span class="titIcon gongmae">공매</span></div> 
+    <div class="mibBody">
+        <div class="tableType">
+            <table class="tableStyle borderStyle left">
+                <tbody>
+                	<tr>
+                        <th>물건관리번호</th>
+                        <td>{{mulgeonCode}}</td>
+                    </tr>
+                    <tr>
+                        <th>물건주소지</th>
+                        <td>{{mulgeonAddress}}</td>
+                    </tr>
+                    <tr>
+                        <th>주소상세</th>
+                        <td>{{mulgeonAddressDetail}}</td>
+                    </tr>
+                    <tr>
+                        <th>처분방식/자산구분</th>
+                        <td>{{cheoboonJasan}}</td>
+                    </tr>
+                    <tr>
+                        <th>용도</th>
+                        <td>{{yongdo}}</td>
+                    </tr>
+                    <tr>
+                        <th>면적</th>
+                        <td>{{area}}</td>
+                    </tr>
+                    <tr>
+                        <th>감정평가금액</th>
+                        <td>{{gamjeongga}}</td>
+                    </tr>
+                    <tr>
+                        <th>입찰방식</th>
+                        <td>{{ibchalMethod}}</td>
+                    </tr>
+                    <tr>
+                        <th>입찰기간(회차/차수)</th>
+                        <td>{{ibchalPeriodNumber}}</td>
+                    </tr>
+                    <tr>
+                        <th>유찰횟수</th>
+                        <td>{{yuchal}}</td>
+                    </tr>
+                    <tr>
+                        <th>집행기관</th>
+                        <td>{{jibhaengGigwan}}</td>
+                    </tr>
+                    <tr>
+                        <th>최저입찰가(예정금액)</th>
+                        <td>{{#xif " minIbchalga != null "}} {{currency minIbchalga}} {{else}} {{minIbchalga}} {{/xif}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mibBody" style="border-radius: 0 0 0 0;">
+    	<div class="munuType" data-address="{{mulgeonAddress}}" data-pnu="{{pnu}}" data-lng="{{lng}}" data-lat="{{lat}}">
+        	<span class="link" style="border-bottom-style:none; padding-left: 20px;"><button type="button" class="mibIcon_01" style="border-right-style:none; font-size:14px;" onclick="hotplace.spot.selectCategory(this)" data-category="SUJI_BOONSEOK">수지분석</button></span>
+			<span class="link" style="border-bottom-style:none; padding-right: 20px;"><button type="button" class="mibIcon_02" style="border-right-style:none; font-size:14px;" onclick="hotplace.spot.selectCategory(this, 'G', '{{unu}}')" data-category="GWANSIM_MULGEON">관심물건 등록</button></span>
+		</div>
+	</div>
+    <div class="mibfooter" >
+    	<button type="button" id="btnGongmaePano" class="positionView" data-name="위치보기">위치보기</button>
+        <button type="button" id="btnGongmaeDetail" class="link" data-name="물건상세조회">물건상세조회</button>
+        <button type="button" id="btnGongmaeThumbClose" class="close">닫기</button>
+    </div>
+</div>

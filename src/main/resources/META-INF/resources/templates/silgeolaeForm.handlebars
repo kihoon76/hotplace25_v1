@@ -1,0 +1,69 @@
+<div id="dvSilgeolaeInfoWin" class="mapInnerBox type2"> 
+    <div class="mibHeader"><span class="titIcon silgeolae">실거래</span></div> 
+    <div class="mibBody">
+        <div class="tableType">
+            <table class="tableStyle borderStyle left">
+                <tbody>
+                	<tr>
+						<th>지번</th>
+						<td>{{jibeon}}</td>
+					</tr>
+                    <tr>
+						<th>지목</th>
+						<td>{{jimok}}</td>
+					</tr>
+					<tr>
+						<th>용도지역</th>
+						<td>{{yongdo}}</td>
+					</tr>
+                    <tr>
+                        <th>계약면적</th>
+                        <td>{{gyeyagarea}}</td>
+                    </tr>
+                    <tr>
+						<th>계약년월</th>
+						<td>{{ymString gyeyagnyeonwol}}</td>
+					</tr>
+					<tr>
+						<th>계약일</th>
+						<td>{{gyeyagil}}</td>
+					</tr>
+					<tr>
+						<th>거래금액<br/>(단위: 만원)</th>
+						<td>{{currency geolaegeumaeg}}</td>
+					</tr>
+					<tr>
+						<th>단지명</th>
+						<td>{{danji}}</td>
+					</tr>
+					<tr>
+						<th>전용면적</th>
+						<td>{{jeonyongarea}}</td>
+					</tr>
+					<tr>
+						<th>층</th>
+						<td>{{cheung}}</td>
+					</tr>
+					<tr>
+						<th>건축년도</th>
+						<td>{{buildingyear}}</td>
+					</tr>
+					<tr>
+						<th>도로명</th>
+						<td>{{doroname}}</td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mibBody" style="border-radius: 0 0 0 0;">
+    	<div class="munuType" data-address="{{jibeon}}" data-pnu="{{pnu}}" data-lng="{{lng}}" data-lat="{{lat}}">
+        	<span class="link" style="border-bottom-style:none; padding-left: 20px;"><button type="button" class="mibIcon_01" style="border-right-style:none; font-size:14px;" onclick="hotplace.spot.selectCategory(this)" data-category="SUJI_BOONSEOK">수지분석</button></span>
+			<span class="link" style="border-bottom-style:none; padding-right: 20px;"><button type="button" class="mibIcon_02" style="border-right-style:none; font-size:14px;" onclick="hotplace.spot.selectCategory(this, 'S')" data-category="GWANSIM_MULGEON">관심물건 등록</button></span>
+		</div>
+	</div>
+    <div class="mibfooter">
+    	<button type="button" id="btnSilgeolaePano" class="positionView" data-name="위치보기">위치보기</button>
+        <button type="button" id="btnSilgeolaeThumbClose" class="close">닫기</button>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				건축허가
+				<span class="sText">( {{daejiwichi}} )</span>
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body">
+
+			<div>
+			
+				<!-- ----------------------- -->
+				<div class="rowBox">
+
+					<div class="g_column w_2">
+						
+						<div class="unit">							
+							<div class="unit_cont bgWhite">
+								<table class="tableStyle borderStyle topBold left">
+									<colgroup>
+										<col style="width:15%;">
+										<col style="width:35%;">
+										<col style="width:15%;">
+										<col style="width:35%;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>대지위치</th>
+											<td>{{daejiwichi}}</td>
+											<th>허가구분</th>
+											<td>{{acceptgubun}}</td>
+										</tr>
+										<tr>
+											<th>허가신고일</th>
+											<td>{{ymdString acceptsingoil}}</td>
+											<th>건축구분</th>
+											<td>{{buildinggubun}}</td>
+										</tr>
+										<tr>
+											<th>지목</th>
+											<td>{{jimok}}</td>
+											<th>대지면적(㎡)</th>
+											<td>{{daejiarea}}</td>
+										</tr>
+										<tr>
+											<th>건축면적(㎡)</th>
+											<td>{{buildingarea}}</td>
+											<th>건폐율(%)</th>
+											<td>{{geonpyeyul}}</td>
+										</tr>
+										<tr>
+											<th>연면적(㎡)</th>
+											<td>{{grossfloorarea}}</td>
+											<th>용적율(%)</th>
+											<td>{{yongjeoglyul}}</td>
+										</tr>
+										<tr>
+											<th>건축물명칭</th>
+											<td>{{buildingname}}</td>
+											<th>주용도</th>
+											<td>{{mainyongdo}}</td>
+										</tr>
+										<tr>
+											<th>주건축물동수</th>
+											<td>{{mainbuildingcount}}</td>
+											<th>부속건축물동수</th>
+											<td>{{subbuildingcount}}</td>
+										</tr>
+										<tr>
+											<th>착공구분</th>
+											<td>{{startgubun}}</td>
+											<th>착공예정일</th>
+											<td>{{ymdString expectedstart}}</td>
+										</tr>
+										<tr>
+											<th>실착공일</th>
+											<td>{{ymdString realstart}}</td>
+											<th>사용승인구분</th>
+											<td>{{acceptusegubun}}</td>
+										</tr>
+										<tr>
+											<th>사용승인일</th>
+											<td>{{ymdString acceptuseday}}</td>
+											<th>&nbsp;</th>
+											<td>&nbsp;</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

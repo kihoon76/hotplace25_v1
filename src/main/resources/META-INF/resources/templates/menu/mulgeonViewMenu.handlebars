@@ -1,0 +1,58 @@
+<div class="headArea">
+	<h2>물건 보기</h2>
+	<button type="button" class="close">
+		<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+	</button>
+</div>
+<div class="bodyArea">
+	<ul class="mulgunList">
+		<li>
+			<span class="rdchBox block">
+				<input type="checkbox" id="mulgeonGyeongmae" data-value="GYEONGMAE">
+				<label for="mulgeonGyeongmae" class="labelCh"><em class="text">경매</em>  [<i class="icon"><img src="resources/img/marker/gyeongmae.png"></i>]</label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="checkbox" id="mulgeonGongmae" data-value="GONGMAE">
+				<label for="mulgeonGongmae" class="labelCh"><em class="text">공매</em> [<i class="icon"><img src="resources/img/marker/gongmae.png"></i>]</label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="checkbox" id="mulgeonBosang" data-value="BOSANG" disabled>
+				<label for="mulgeonBosang" class="labelCh"><em class="text">보상물건</em> [<i class="icon"><img src="resources/img/marker/bosang.png"></i>] [<i class="icon level"><img src="resources/img/level/200m.png"></i>]</label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="checkbox" id="mulgeonPyeonib" data-value="PYEONIB" disabled>
+				<label for="mulgeonPyeonib" class="labelCh"><em class="text">편입물건</em> [<i class="icon"><img src="resources/img/marker/pyeonib.png"></i>] [<i class="icon level"><img src="resources/img/level/200m.png"></i>]</label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="checkbox" id="mulgeonSilgeolae" data-value="SILGEOLAE" disabled>
+				<label for="mulgeonSilgeolae" class="labelCh"><em class="text">실거래가</em> [<i class="icon"><img src="resources/img/marker/silgeolae.png"></i>] [<i class="icon level"><img src="resources/img/level/25m.png"></i>]</label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="checkbox" id="mulgeonAcceptBuilding" data-value="ACCEPT_BUILDING" disabled>
+				<label for="mulgeonAcceptBuilding" class="labelCh"><em class="text">건축허가</em> [<i class="icon"><img src="resources/img/marker/acceptbuilding.png"></i>] [<i class="icon level"><img src="resources/img/level/25m.png"></i>]</label>
+			</span>
+		</li>
+	</ul>
+</div>
+<div class="footerEtcText">
+	<div class="tit">[알림]</div>
+	<div class="cont">
+		● 보상물건/편입물건의 지도상 표시는 결제후에 가능합니다<br/>
+		● 보상,편입,실거래가,건축허가 옆에 표시된 축척은 해당물건이 지도상에서 표시되는 최대 축척을 나타냅니다<br/>
+		● 물건 축척까지 줌인(오른쪽 하단 지도 축척)을 하셔야 활성화 됩니다
+	</div>
+</div>
+<div class="footArea">
+	<button type="button" class="btnstyle middle blue" id="btnViewMulgeon">확인</button>
+	<button type="button" class="btnstyle middle gray MENU_CLOSE" data-menu="{{menuName}}">닫기</button>
+</div>

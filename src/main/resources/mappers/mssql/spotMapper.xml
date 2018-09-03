@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.mssql.spotMapper">
+
+	<sql id="sqlInsertMaemul">
+		insert into [웹].[dbo].[매물등록] (계정아이디, PNU, 등록물건지번주소, 물건특징, 연락처, 이름, 경도, 위도)
+		values (#{accountId}, #{pnu}, #{addressJibeon}, #{description}, #{phone}, #{register}, #{lat}, #{lng})
+	</sql>
+	
+	<insert id="insertMaemulNoPic" parameterType="Maemul">
+		<include refid="sqlInsertMaemul" />
+	</insert>
+	
+	<insert id="insertMaemul" parameterType="Maemul">
+		<include refid="sqlInsertMaemul" />
+		<selectKey keyProperty="maemulBeonho"  resultType="int" order="AFTER">
+			select ident_current('[웹].[dbo].[매물등록]')
+		</selectKey>
+	</insert>
+	
+	<insert id="insertMaemulImages" parameterType="Maemul">
+		insert into [웹].[dbo].[매물등록_이미지](매물번호, 이미지명, 확장자, 이미지)
+		values (
+			<foreach collection="files" item="item" separator=",">
+			#{maemulBeonho}, #{item.imageName}, #{item.ext}, #{item.image, typeHandler=org.apache.ibatis.type.ByteArrayTypeHandler}
+			</foreach>
+		)
+	</insert>
+	
+	<select id="selectRegistedMaemul" parameterType="Maemul" resultType="int">
+		select count(매물번호)
+		  from [웹].[dbo].[매물등록]
+		 where 계정아이디 = #{accountId}
+		   and PNU = #{pnu}
+	</select>
+	
+	<select id="selectRegistedConsulting" parameterType="Consulting" resultType="int">
+		select count(요청번호)
+		  from [웹].[dbo].[컨설팅요청]
+		 where 계정아이디 = #{accountId}
+		   and PNU = #{pnu}
+	</select>
+	
+	<insert id="insertConsulting" parameterType="Consulting">
+		insert into [웹].[dbo].[컨설팅요청](계정아이디, PNU, 이름, 연락처, 이메일, 문의사항, 경도, 위도, 지번주소)
+		values (#{accountId}, #{pnu}, #{name}, #{phone}, #{email}, #{question}, #{lat}, #{lng}, #{address})
+	</insert>
+	
+	<select id="selectRegistedGwansimMulgeon" parameterType="GwansimMulgeon" resultType="GwansimMulgeon">
+		select 관심물건번호 gwansimMulgeonNum, 
+			      위도 lat,
+			      경도 lng,
+			      물건종류 mulgeonType
+		  from [웹].[dbo].[관심물건]
+		 where 계정아이디 = #{accountId}
+		   and PNU = #{pnu}
+	</select>
+	
+	<insert id="insertGwansimMulgeon" parameterType="GwansimMulgeon">
+		insert into [웹].[dbo].[관심물건](PNU, 등록물건지번주소, 메모, 계정아이디, 위도, 경도, 물건종류, 고유번호)
+		<choose>
+		<when test="mulgeonType == ''">
+		values (#{pnu}, #{address}, #{memo}, #{accountId}, #{lat}, #{lng}, null, #{unu})
+		</when>
+		<otherwise>
+		values (#{pnu}, #{address}, #{memo}, #{accountId}, #{lat}, #{lng}, #{mulgeonType}, #{unu})
+		</otherwise>
+		</choose>
+	</insert>
+	
+	<select id="selectMyGwansimList" parameterType="string" resultType="GwansimMulgeon">
+		select 관심물건번호 gwansimMulgeonNum,
+			   PNU pnu,
+			      등록물건지번주소 address,
+			      메모 memo,
+			      위도 lat,
+			      경도 lng,
+			   isnull(물건종류, 'X') mulgeonType,
+			      고유번호 unu,
+			   CONVERT(char(10), 등록일, 23) regDate
+		  from [웹].[dbo].[관심물건]
+		 where 계정아이디 = #{accountId} 
+	     order by  등록일 desc         
+	</select>
+	
+	<delete id="deleteMyGwansim" parameterType="GwansimMulgeon">
+		delete 
+		  from [웹].[dbo].[관심물건]
+		 where 계정아이디 = #{accountId}
+		   and 관심물건번호 = #{gwansimMulgeonNum}
+	</delete>
+	
+	<select id="selectMyGwansim" parameterType="GwansimMulgeon" resultType="GwansimMulgeon">
+		select 관심물건번호 gwansimMulgeonNum,
+			   PNU pnu,
+			      등록물건지번주소 address,
+			      메모 memo,
+			      위도 lat,
+			      경도 lng,
+			      물건종류 mulgeonType,
+			   CONVERT(char(10), 등록일, 23) regDate
+		  from [웹].[dbo].[관심물건]
+		 where 계정아이디 = #{accountId}
+		   and 관심물건번호 = #{gwansimMulgeonNum}
+	</select>
+	
+	<update id="updateMyGwansimMulgeon" parameterType="GwansimMulgeon">
+		update [웹].[dbo].[관심물건]
+		   set 메모 = #{memo}
+		 where 계정아이디 = #{accountId}
+		   and 관심물건번호 = #{gwansimMulgeonNum}
+	</update>
+	
+	<select id="selectTojiDefaultInfo" parameterType="string" resultType="map">
+		select PNU, 지목 jimok, 면적 area, 공시지가_기준년월 gongsiYm, 공시지가 gongsi
+		  from [서비스].[dbo].[토지기본정보PNU]
+		 where PNU = #{pnu}
+	</select>
+</mapper>
+<!-- 
+
+ -->

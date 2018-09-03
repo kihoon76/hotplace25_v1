@@ -1,0 +1,79 @@
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				컨설팅 요청
+				<span class="sText">( 소재지 : {{address}} )</span>
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="unit dvConsultRequest">
+				<div class="unit_cont">
+					<div class="topInfoBox">
+						부동산 투자를 실행하기 전에 개발가능 여부 및 투자타당성 분석 등 컨설팅을 의뢰하는 곳입니다. 해당분야 <strong class="color_black">최고의 전문가</strong>에게 의뢰하여 <strong class="color_blue">빠른 시간 내에 답변</strong> 드리겠습니다.
+					</div>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle borderStyle left">
+						<colgroup>
+							<col style="width:100px;">
+							<col style="width:*;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>성명</th>
+								<td>
+									<input type="text" id="txtConsultingName" class="inp" style="width:100%;" />
+									<span class="helpCont EMPTY">성명을 입력해 주세요</span>
+								</td>
+							</tr>
+							<tr>
+								<th>연락처</th>
+								<td>
+									<div class="inputGroup">
+										<select class="inp fl" style="width:30%;" id="selConsultingPhineF">
+										<select>	
+										<span class="inline center fl"  style="width:5%;">-</span>
+										<input type="text" id="txtConsultingPhoneM" class="inp fl" style="width:30%;" maxLength="4"/>
+										<span class="inline center fl"  style="width:5%;">-</span>
+										<input type="text" id="txtConsultingPhoneL" class="inp fl" style="width:30%;" maxLength="4"/>
+									</div>
+									<span class="helpCont EMPTY">숫자를 입력해 주세요</span>
+									<span class="helpCont PHONE_M">가운데자리 3자리~4자리를 입력해 주세요</span>
+									<span class="helpCont PHONE_L">끝자리 4자리를 입력해 주세요</span>
+								</td>
+							</tr>
+							<tr>
+								<th>이메일 주소</th>
+								<td>
+									<div class="inputGroup">
+										<input type="text" id="txtConsultingEmail" class="inp fl" style="width:50%;" />
+										<span class="inline center fl" style="width:5%;" >@</span>
+										<select class="inp fl" style="width:45%;" id="selConsultingEmail"><select>
+									</div>
+									<span class="helpCont EMPTY">email을 입력하세요</span>
+									<span class="helpCont SELECT">email을 선택하세요</span>
+									<span class="helpCont FORMAT">email 형식이 올바르지 않습니다</span>
+								</td>
+							</tr>
+							<tr>
+								<th>문의사항</th>
+								<td>
+									<textarea class="inp" style="width:100%; height:80px;" placeholder="문의사항을 입력해 주세요" id="txtConsultingQuestion"></textarea>
+									<span class="helpCont EMPTY">문의사항을 입력해 주세요</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-pnu="{{pnu}}" id="btnConsultingReg">등록</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">취소</button>
+		</div>
+	</div>
+</div>
