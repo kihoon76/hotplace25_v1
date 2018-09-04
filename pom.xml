@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples.service.service</groupId>
 	<artifactId>hotplace25_v1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>war</packaging>
   
     <properties>
@@ -34,6 +34,7 @@
 		<jsoup-version>1.10.2</jsoup-version>
 		
 		<spring.rabbit-version>2.0.0.RELEASE</spring.rabbit-version>
+		<finalName>hotplace25-${project.version}</finalName>
 	</properties>
 	
 	<repositories>
@@ -360,6 +361,7 @@
 	</dependencies>
 	
     <build>
+    	<finalName>${finalName}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
