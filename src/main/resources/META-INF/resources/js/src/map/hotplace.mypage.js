@@ -74,10 +74,10 @@
 	}
 	
 	mypage.init = function() {
-		_initMypage();
+		//_initMypage();
 		_initAccount();
 		_initPayment();
-		_initGwansimMulgeon();
+		//_initGwansimMulgeon();
 	}
 	
 	function _initMypage() {
@@ -297,9 +297,9 @@
 		    fitColumns:true, //fit columns to width of table (optional)
 		    columns:[
 		        {title:'등록일', field:'regDate', width:100, headerFilter:'input', headerFilterPlaceholder:'2018-01-01'},
-		        {title:'물건주소', field:'address', width:308, headerFilter:'input', headerFilterPlaceholder:'물건주소검색'},
-		        {title:'메모내용', field:'memo', width:200, headerFilter:'input', headerFilterPlaceholder:'메모내용검색', headerSort:false},
-		        {title:'물건종류', field:'mulgeonType', headerFilter:true, width:100, align:'center', formatter: function(cell) {
+		        {title:'물건주소', field:'address', width:100, headerFilter:'input', headerFilterPlaceholder:'물건주소검색'},
+		        {title:'메모내용', field:'memo', width:95, headerFilter:'input', headerFilterPlaceholder:'메모내용검색', headerSort:false},
+		        {title:'물건종류', field:'mulgeonType', headerFilter:true, width:80, align:'center', formatter: function(cell) {
 		        	var v = '';
 		        	switch(cell.getValue()) {
 		        	case 'K':
@@ -363,7 +363,23 @@
 							}
 						});
 					}, msg, {width:'40%'});
-		        }}
+		        }}, {title:'수정', field:'gwansimMulgeonNum', width:50, formatter: function(cell) {
+		        		return '<span class="iconRBtnMod" style="padding-left: 5px;"><i class="ambicon-027_setting"></i></span>'
+		        	}, headerFilter:'input', headerFilterPlaceholder:'', headerSort:false,
+		        	headerFilterFunc: function() { return true;},
+		        	cellClick: function(e, cell) {
+		        		e.stopPropagation();
+			        	var rowData = cell.getData();
+			        	console.log(rowData);
+			        	
+				        mypage.triggerGwansimPop({
+							key: rowData.gwansimMulgeonNum,
+							lat: rowData.lat,
+							lng: rowData.lng,
+							mulgeonType: rowData.mulgeonType
+						});
+		        	}
+		        }
 		    ],
 		    movableColumns:true,
 		    resizableRows:true,

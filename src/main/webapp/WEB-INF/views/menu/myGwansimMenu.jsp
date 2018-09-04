@@ -10,5 +10,6 @@
 	<div id="dvMypageGwansimMulgeon"  class="tableStyle gridStyle center" data-tab='${gwansimStr}'></div>
 </div>
 <div class="footArea">
+	<span><strong>※관심물건 추가후 창을 닫았다 새로여셔야 반영됩니다.</strong></span>
 	<button type="button" class="btnstyle middle gray MENU_CLOSE" data-menu="{{menuName}}">닫기</button>
 </div>
