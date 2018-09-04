@@ -955,7 +955,7 @@
 	function _searchTooja(tableId, param, fn) {
 		function __createTabulator(d) {
 			hotplace.dom.createTabulator(tableId, {
-			    //height:700, // set height of table
+			    height:700, // set height of table
 			    fitColumns:false, //fit columns to width of table (optional)
 			    selectable:1,
 			    columns:param.columns,/*_tabulatorColumns.jangmi,*/
@@ -1117,7 +1117,6 @@
 		return obj;
 	}
 	
-	
 	function _searchGyeonggong() {
 		
 		//min max 값을 교환해야 한다
@@ -1167,6 +1166,7 @@
 					_gyeonggongDvToogle();
 					
 					hotplace.dom.createTabulator(_dvGyeonggongResult, {
+						//height: hotplace.dom.getLnbContentBodyAreaHeight('dvGyeonggongSearch'),
 					    fitColumns:true, //fit columns to width of table (optional)
 					    selectable:1,
 					    columns:_tabulatorColumns.gyeonggong,/*_tabulatorColumns.jangmi,*/

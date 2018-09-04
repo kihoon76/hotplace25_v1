@@ -150,7 +150,7 @@
 		<div id="mulgeonViewMenu" class="lnbContWrap" style="width:280px;"></div>
 		<div id="heatmapViewMenu" class="lnbContWrap" style="width:280px;"></div>
 		<div id="hpExplainMenu" class="lnbContWrap" style="width:500px;"></div>
-		<div id="myGwansimMenu" class="lnbContWrap" style="width:500px;"></div>
+		<div id="myGwansimMenu" class="lnbContWrap" style="width:750px;"></div>
 	</div>
 	
 	<!-- map 영역 -->
