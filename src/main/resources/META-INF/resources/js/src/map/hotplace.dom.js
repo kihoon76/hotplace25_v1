@@ -1546,6 +1546,27 @@
 		}
 	}
 	
+	dom.isActiveMenu = function(menuClassNum) {
+		var $a = $('#memuList a.' + menuClassNum);
+		//console.log($('#memuList'))
+		if($a.get(0)) {
+			if($a.parent().hasClass('active')) {
+				return true;
+			}
+			
+			return false;
+		}
+		
+		return false;
+	}
+	
+	dom.triggerMenu = function(menuClassNum) {
+		var $a = $('#memuList a.' + menuClassNum);
+		if($a.get(0)) {
+			$a.trigger('click');
+		}
+	}
+	
 	dom.listExpandCollapse = function(parentId) {
 		$(parentId + ' button[data-role="slideShow"], a[data-role="slideShow"]')
 		.off('click')

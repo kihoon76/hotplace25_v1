@@ -275,6 +275,9 @@
 	
 	function _saveGwansimSuccess() {
 		hotplace.dom.showAlertMsg(function() {
+			if(hotplace.dom.isActiveMenu('menu07')) {
+				hotplace.dom.triggerMenu('menu07');
+			}
     		hotplace.dom.closeModal();
     	}, '관심물건이 성공적으로 등록되었습니다.', {width:'40%'});
 	}

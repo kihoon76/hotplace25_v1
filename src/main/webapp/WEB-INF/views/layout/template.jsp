@@ -137,7 +137,7 @@
 				<a href="#" class="menu06" data-name="hpExplainMenu" data-new="false"><i class="icon"></i><span>HP지수</span></a>
 			</li>
 			<li>
-				<a href="#" class="menu06" data-name="myGwansimMenu" data-new="new"><i class="icon"></i><span>관심물건</span></a>
+				<a href="#" class="menu07" data-name="myGwansimMenu" data-new="new"><i class="icon"></i><span>관심물건</span></a>
 			</li>
 		</ul>
 	</div>

@@ -254,7 +254,13 @@
 						contentType: 'application/json',
 						success: function(data, textStatus, jqXHR) {
 							if(data.success) {
-								hotplace.dom.showAlertMsg(null, '관심물건이 수정되었습니다.', {width:'40%'});
+								hotplace.dom.showAlertMsg(function() {
+									//관심물건 메뉴가 열려있으면 새로고침
+									if(hotplace.dom.isActiveMenu('menu07')) {
+										hotplace.dom.triggerMenu('menu07');
+									}
+									
+								}, '관심물건이 수정되었습니다.', {width:'40%'});
 							}
 							else {
 								jqXHR.errCode = hotplace.error.GWANSIM_MOD;
