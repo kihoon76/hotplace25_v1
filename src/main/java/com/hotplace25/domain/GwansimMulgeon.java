@@ -14,6 +14,7 @@ public class GwansimMulgeon {
 	private String accountId;
 	private String mulgeonType;	//물건타입(경매:K, 공매:G, 보상:B, 편입:P, 실거래:S, 건축허가:U)
 	private String unu;			//물건고유번호
+	private String grade;		//관심물건 등급(S,A,B,C,D,E,Z(default))
 	
 	public String getPnu() {
 		return pnu;
@@ -74,5 +75,11 @@ public class GwansimMulgeon {
 	}
 	public void setUnu(String unu) {
 		this.unu = unu;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 }

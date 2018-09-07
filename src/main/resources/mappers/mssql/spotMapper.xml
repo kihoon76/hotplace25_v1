@@ -57,13 +57,13 @@
 	</select>
 	
 	<insert id="insertGwansimMulgeon" parameterType="GwansimMulgeon">
-		insert into [웹].[dbo].[관심물건](PNU, 등록물건지번주소, 메모, 계정아이디, 위도, 경도, 물건종류, 고유번호)
+		insert into [웹].[dbo].[관심물건](PNU, 등록물건지번주소, 메모, 계정아이디, 위도, 경도, 물건종류, 고유번호, 분류등급)
 		<choose>
 		<when test="mulgeonType == ''">
-		values (#{pnu}, #{address}, #{memo}, #{accountId}, #{lat}, #{lng}, null, #{unu})
+		values (#{pnu}, #{address}, #{memo}, #{accountId}, #{lat}, #{lng}, null, #{unu}, #{grade})
 		</when>
 		<otherwise>
-		values (#{pnu}, #{address}, #{memo}, #{accountId}, #{lat}, #{lng}, #{mulgeonType}, #{unu})
+		values (#{pnu}, #{address}, #{memo}, #{accountId}, #{lat}, #{lng}, #{mulgeonType}, #{unu}, #{grade})
 		</otherwise>
 		</choose>
 	</insert>
@@ -76,6 +76,7 @@
 			      위도 lat,
 			      경도 lng,
 			   isnull(물건종류, 'X') mulgeonType,
+			      분류등급 grade, 
 			      고유번호 unu,
 			   CONVERT(char(10), 등록일, 23) regDate
 		  from [웹].[dbo].[관심물건]
@@ -98,6 +99,7 @@
 			      위도 lat,
 			      경도 lng,
 			      물건종류 mulgeonType,
+			      분류등급 grade,
 			   CONVERT(char(10), 등록일, 23) regDate
 		  from [웹].[dbo].[관심물건]
 		 where 계정아이디 = #{accountId}
@@ -106,7 +108,8 @@
 	
 	<update id="updateMyGwansimMulgeon" parameterType="GwansimMulgeon">
 		update [웹].[dbo].[관심물건]
-		   set 메모 = #{memo}
+		   set 메모 = #{memo},
+		   	       분류등급 = #{grade}
 		 where 계정아이디 = #{accountId}
 		   and 관심물건번호 = #{gwansimMulgeonNum}
 	</update>

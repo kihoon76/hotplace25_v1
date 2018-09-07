@@ -131,6 +131,10 @@
 		return _getCodeStr(hotplace.config.codes.hpGrade, val);
 	}
 	
+	util.getGwansimGradeStr = function(val) {
+		return _getCodeStr(hotplace.config.codes.gwansimGrade, val);
+	}
+	
 	util.getMaegakGubunStr = function(val) {
 		if(val) {
 			switch(val) {

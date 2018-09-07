@@ -29,6 +29,7 @@ import com.hotplace25.domain.GwansimMulgeon;
 import com.hotplace25.domain.Maemul;
 import com.hotplace25.service.SearchService;
 import com.hotplace25.service.SpotService;
+import com.hotplace25.types.GwansimGrade;
 import com.hotplace25.types.MulgeonType;
 import com.hotplace25.util.SessionUtil;
 
@@ -260,6 +261,11 @@ public class SpotController {
 			try {
 				
 				String mulgeonType = gwansimMulgeon.getMulgeonType();
+				String grade = gwansimMulgeon.getGrade();
+				
+				//등급타입이 유효하지 않으면 exception 발생
+				GwansimGrade g = GwansimGrade.getType(grade);
+				
 				if(!"".equals(mulgeonType)) {
 					//물건타입이 유효하지 않으면 exception 발생
 					MulgeonType.getType(mulgeonType);
@@ -318,6 +324,7 @@ public class SpotController {
 		gm.setAccountId(currentId);
 		gm.setGwansimMulgeonNum(param.get("gwansimNum"));
 		gm.setMemo(param.get("memo"));
+		gm.setGrade(param.get("grade"));
 		
 		try {
 			boolean r = spotService.modifyMyGwansimMulgeon(gm);

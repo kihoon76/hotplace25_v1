@@ -380,6 +380,15 @@
     			"75TO50":{name:'75~50%', value:'03'},
     			"50TO25":{name:'50~25%', value:'04'},
     			"m25":{name:'25% 미만', value:'05'}
+    		},
+    		gwansimGrade:{
+    			'S': {name: 'S', value: '1'},
+    			'A': {name: 'A', value: '2'},
+    			'B': {name: 'B', value: '3'},
+    			'C': {name: 'C', value: '4'},
+    			'D': {name: 'D', value: '5'},
+    			'F': {name: 'F', value: '6'},
+    			'Z': {name: '검토', value: '7'},
     		}
     	}
     }

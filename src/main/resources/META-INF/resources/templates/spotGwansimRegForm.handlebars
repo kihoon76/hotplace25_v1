@@ -23,6 +23,16 @@
 								<td>{{address}}</td>
 							</tr>
 							<tr>
+								<th>분류등급</th>
+								<td>
+									<select id="selGwansimGrade" style="height:25px;">
+									{{#each grade as |gwansimGrade|}}
+                                    <option value="{{gwansimGrade.value}}">{{gwansimGrade.name}}</option>
+                                    {{/each}}
+                                    </select>
+                                </td>
+							</tr>
+							<tr>
 								<th>메모</th>
 								<td>
 									<textarea class="inp" style="width:100%; height:200px;" placeholder="남기실 메모를 입력해 주세요" id="txtGwansimMemo"></textarea>

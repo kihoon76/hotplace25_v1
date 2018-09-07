@@ -151,7 +151,8 @@
 	 * 관심물건 등록
 	 ************************************************************/
 	var _btnRegGwansimMulgeon = '#btnRegGwansimMulgeon',
-		_txtGwansimMemo = '#txtGwansimMemo';
+		_txtGwansimMemo = '#txtGwansimMemo',
+		_selGwansimGrade = '#selGwansimGrade';
 	
 	function _validateGwansimMulgeon() {
 		var isNotEmpty = hotplace.validation.isFormNotEmpty([_txtGwansimMemo]);
@@ -185,7 +186,7 @@
                 	}
                 }
                 else {
-                	hotplace.dom.showSpotGwansimRegForm({address:_address}, null, function() {
+                	hotplace.dom.showSpotGwansimRegForm({address:_address, grade:hotplace.config.codes.gwansimGrade}, null, function() {
                 		$(_btnRegGwansimMulgeon)
                 		.off('click')
                 		.on('click', function() {
@@ -202,7 +203,8 @@
                 		    			lat: _lat,
                 		    			memo:$(_txtGwansimMemo).val().trimTS(),
                 		    			mulgeonType:m,
-                		    			unu: unu
+                		    			unu: unu,
+                		    			grade: $(_selGwansimGrade).val()
                 		            }),
                 		            success: function(data, textStatus, jqXHR) {
                 		                if(!data.success) {

@@ -32,6 +32,20 @@
 								</td>
 							</tr>
 							<tr>
+								<th>분류등급</th>
+								<td>
+									<select id="selMypageGwansimGrade" style="height:25px;">
+										<option value="1" <c:if test="${gwansim.grade eq '1'}">selected</c:if>>S</option>
+										<option value="2" <c:if test="${gwansim.grade eq '2'}">selected</c:if>>A</option>
+										<option value="3" <c:if test="${gwansim.grade eq '3'}">selected</c:if>>B</option>
+										<option value="4" <c:if test="${gwansim.grade eq '4'}">selected</c:if>>C</option>
+										<option value="5" <c:if test="${gwansim.grade eq '5'}">selected</c:if>>D</option>
+										<option value="6" <c:if test="${gwansim.grade eq '6'}">selected</c:if>>F</option>
+										<option value="6" <c:if test="${gwansim.grade eq '7'}">selected</c:if>>검토</option>
+                                    </select>
+                                </td>
+							</tr>
+							<tr>
 								<th>물건종류</th>
 								<c:choose>
 								<c:when test="${gwansim.mulgeonType eq 'K'}">
