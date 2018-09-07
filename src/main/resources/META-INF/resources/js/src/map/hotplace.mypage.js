@@ -305,14 +305,14 @@
 		    fitColumns:true, //fit columns to width of table (optional)
 		    columns:[
 		        {title:'등록일', field:'regDate', width:100, headerFilter:'input', headerFilterPlaceholder:'2018-01-01'},
-		        {title:'물건주소', field:'address', width:200, headerFilter:'input', headerFilterPlaceholder:'물건주소검색'},
-		        {title:'메모내용', field:'memo', width:240, headerFilter:'input', headerFilterPlaceholder:'메모내용검색', headerSort:false},
 		        {title:'분류등급', field:'grade', width:80, headerFilter:true, align:'center', editor:_makeTabulatorFilterFromCode(hotplace.config.codes.gwansimGrade),
 		        	editable:hotplace.dom.createTabulatorNoEdit,
 			    	formatter:function(cell) {
 			    		return hotplace.util.getGwansimGradeStr(cell.getValue());
 				    }
 		        },
+		        {title:'물건주소', field:'address', width:180, headerFilter:'input', headerFilterPlaceholder:'물건주소검색'},
+		        {title:'메모내용', field:'memo', width:240, headerFilter:'input', headerFilterPlaceholder:'메모내용검색', headerSort:false},
 		        {title:'물건종류', field:'mulgeonType', headerFilter:true, width:80, align:'center', formatter: function(cell) {
 		        	var v = '';
 		        	switch(cell.getValue()) {
