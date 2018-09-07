@@ -312,7 +312,7 @@
 				    }
 		        },
 		        {title:'물건주소', field:'address', width:180, headerFilter:'input', headerFilterPlaceholder:'물건주소검색'},
-		        {title:'메모내용', field:'memo', width:240, headerFilter:'input', headerFilterPlaceholder:'메모내용검색', headerSort:false},
+		        {title:'메모내용', field:'memo', width:185, headerFilter:'input', headerFilterPlaceholder:'메모내용검색', headerSort:false},
 		        {title:'물건종류', field:'mulgeonType', headerFilter:true, width:80, align:'center', formatter: function(cell) {
 		        	var v = '';
 		        	switch(cell.getValue()) {
