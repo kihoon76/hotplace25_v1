@@ -27,7 +27,7 @@
 								<td>
 									<select id="selGwansimGrade" style="height:25px;">
 									{{#each grade as |gwansimGrade|}}
-                                    <option value="{{gwansimGrade.value}}"  {{#xif " gwansimGrade.value == '7' " }} selected {{/xif}}>{{gwansimGrade.name}}</option>
+                                    <option value="{{gwansimGrade.value}}"  {{#if_eq gwansimGrade.value  '7'}} selected {{/if_eq}}>{{gwansimGrade.name}}</option>
                                     {{/each}}
                                     </select>
                                 </td>

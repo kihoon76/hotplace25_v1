@@ -279,6 +279,42 @@ $(document).ready(function() {
 		});
 	});
 	
+	
+	//로그인창 pw caps lock 체크
+	$(document).on('keypress', '#pw', function(e) {
+		var myKeyCode = 0,
+	        myShiftKey = false,
+	        loginCapslock = '#loginCapslock';
+	    var myMsg='Caps Lock is On.\n\nTo prevent entering your password incorrectly,\nyou should press Caps Lock to turn it off.';
+
+	    // Internet Explorer 4+
+	    if(document.all) {
+	    	myKeyCode = e.keyCode;
+	    	myShiftKey = e.shiftKey;
+	    // Netscape 4
+	    }
+	    else if(document.layers) {
+	    	myKeyCode = e.which;
+	    	myShiftKey = (myKeyCode == 16) ? true : false;
+	    // Netscape 6
+	    } 
+	    else if(document.getElementById) {
+	    	myKeyCode = e.which;
+	    	myShiftKey = (myKeyCode == 16) ? true : false;
+	    }
+
+	    if((myKeyCode >= 65 && myKeyCode <= 90 ) && !myShiftKey) {
+	    	$(loginCapslock).show();
+	    	return false;
+	    } 
+	    else if((myKeyCode >= 97 && myKeyCode <= 122) && myShiftKey) {
+	    	$(loginCapslock).show();
+	    	return false;
+	    }
+	    
+	    $(loginCapslock).hide();
+	});
+	
 	//로그인 버튼
 	$(document).on('click', _login_BTN, function() {
 		var id = $('#id').val(),
