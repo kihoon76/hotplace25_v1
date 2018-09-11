@@ -119,25 +119,25 @@
 
 		<ul id="memuList" class="memuList">
 			<li>
-				<a href="#" class="menu01" data-name="addrSearchMenu" data-new="true"><i class="icon"></i><span>주소 검색</span></a>
+				<a href="#" class="menu01" data-name="addrSearchMenu" data-new="true"><i class="icon"></i><em>주소검색</em><span>주소 검색</span></a>
 			</li>
 			<li>
-				<a href="#" class="menu02" data-name="toojaRegionSearchMenu" data-new="false"><i class="icon"></i><span>투자 유망 지역 검색</span></a>
+				<a href="#" class="menu02" data-name="toojaRegionSearchMenu" data-new="false"><i class="icon"></i><em>투자 유망</em><span>투자 유망 지역 검색</span></a>
 			</li>
 			<li>
-				<a href="#" class="menu03" data-name="gyeonggongSearchMenu" data-new="false"><i class="icon"></i><span>경•공매 물건 검색</span></a>
+				<a href="#" class="menu03" data-name="gyeonggongSearchMenu" data-new="false"><i class="icon"></i><em>경•공매</em><span>경•공매 물건 검색</span></a>
 			</li>
 			<li id="lnbMulgeonLi" class="disabled MULGEON" data-key="MULGEON">
-				<a href="#" class="menu04" data-name="mulgeonViewMenu" data-new="false" data-first-load="true"><i class="icon"></i><span>물건보기</span></a>
+				<a href="#" class="menu04" data-name="mulgeonViewMenu" data-new="false" data-first-load="true"><i class="icon"></i><em>물건보기</em><span>물건보기</span></a>
 			</li>
 			<li>
-				<a href="#" class="menu05" data-name="heatmapViewMenu" data-new="false"><i class="icon"></i><span>히트맵보기</span></a>
+				<a href="#" class="menu05" data-name="heatmapViewMenu" data-new="false"><i class="icon"></i><em>히트맵</em><span>히트맵보기</span></a>
 			</li>
 			<li>
-				<a href="#" class="menu06" data-name="hpExplainMenu" data-new="false"><i class="icon"></i><span>HP지수</span></a>
+				<a href="#" class="menu06" data-name="hpExplainMenu" data-new="false"><i class="icon"></i><em>HP지수</em><span>HP지수</span></a>
 			</li>
 			<li>
-				<a href="#" class="menu07" data-name="myGwansimMenu" data-new="new"><i class="icon"></i><span>관심물건</span></a>
+				<a href="#" class="menu07" data-name="myGwansimMenu" data-new="new"><i class="icon"></i><em>관심물건</em><span>관심물건</span></a>
 			</li>
 		</ul>
 	</div>

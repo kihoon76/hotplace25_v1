@@ -421,13 +421,39 @@ body	 {min-height:600px;}
 
 .mapInnerBox.type2 .mibfooter {text-align:center; padding:0px 20px 20px; overflow:auto; background:#333; min-height:50px; clear:both; border-radius:0 0 5px 5px;}
 
-.mapInnerBox.type2 .mibfooter button {height:30px; line-height:30px;  text-align:center; color:#fff; position:relative; font-size:14px; font-weight:500; padding:0 30px;}
+.mapInnerBox.type2 .mibfooter button {
+  height:30px; line-height:30px;  text-align:center; color:#fff; 
+  position:relative; font-size:14px; font-weight:500; padding:0 30px;
+}
 .mapInnerBox.type2 .mibfooter button:after {
 	font-family: 'AMB-iconfont' !important; speak:none; font-style:normal; font-weight:normal; font-variant:normal; text-transform:none; line-height:1;
 	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 	display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
 }
-.mapInnerBox.type2 .mibfooter button.close {opacity:1; text-shadow:none; float:none; }
+
+/* 팝업 하단 버튼 */
+.mapInnerBox.type2 .mibfooter button.profit {padding:0 15px 0 30px;}
+.mapInnerBox.type2 .mibfooter button.profit:after {
+  display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
+  content:""; position:absolute; top:0; left:0; background:url('../img/infoWindow_icon.png') no-repeat; background-position:0 0;
+}
+.mapInnerBox.type2 .mibfooter button.profit:hover {color:#fff;}
+
+.mapInnerBox.type2 .mibfooter button.gwansim {padding:0 15px 0 30px;}
+.mapInnerBox.type2 .mibfooter button.gwansim:after {
+  display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
+  content:""; position:absolute; top:0; left:0; background:url('../img/infoWindow_icon.png') no-repeat; background-position:0 -30px;
+}
+.mapInnerBox.type2 .mibfooter button.gwansim:hover {color:#fff;}
+
+.mapInnerBox.type2 .mibfooter button.tojiuse {padding:0 15px 0 30px;}
+.mapInnerBox.type2 .mibfooter button.tojiuse:after {
+  display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
+  content:""; position:absolute; top:0; left:0; background:url('../img/infoWindow_icon.png') no-repeat; background-position:0 -90px;
+}
+.mapInnerBox.type2 .mibfooter button.tojiuse:hover {color:#fff;}
+
+.mapInnerBox.type2 .mibfooter button.close {opacity:1; text-shadow:none; float:none;}
 .mapInnerBox.type2 .mibfooter button.close:after {	
 	content:'\e90e'; position:absolute; top:0; left:0;
 }
@@ -583,7 +609,8 @@ body	 {min-height:600px;}
 .lnbArea .memuList > li:nth-of-type(1) {border-top:none; margin-top:0px;}
 
 .lnbArea .memuList li > a {display:block; min-height:70px; line-height:70px;}
-.lnbArea .memuList li > a > i {display:inline-block; width:30px; height:30px; position:absolute; left:15px; top:50%; margin-top:-15px;}
+.lnbArea .memuList li > a > i {display:inline-block; width:30px; height:30px; position:absolute; left:15px; top:50%; margin-top:-25px;}
+.lnbArea .memuList li > a > em {position:absolute; bottom:12px; left:0; width:100%; line-height:1; text-align:center; color:#fff; font-size:11px; opacity:0.6;}
 .lnbArea .memuList li > a > span {display:none; position:absolute; width:160px; height:40px; line-height:40px;  top:50%; left:65px; margin-top:-20px; border-radius:2px; font-size:14px; letter-spacing:-0.05em; padding:0 10px; background:#333336; color:#fff;}
 .lnbArea .memuList li > a > span:after {display:block; content:''; position:absolute; left:-4px; top:50%; margin-top:-5px; width:0; height:0; border-top:4px solid transparent; border-bottom:4px solid transparent; border-right:4px solid #333336;}
 .lnbArea .memuList li > a > i {opacity:0.6;}
@@ -603,6 +630,7 @@ body	 {min-height:600px;}
 .lnbArea .memuList li.active > a {background-color:#2a7cdd;}
 .lnbArea .memuList li.active > a > i,
 .lnbArea .memuList li.active > a > span {opacity:1; font-weight:bold;}
+.lnbArea .memuList li.active > a > em {opacity:1;}
 
 .lnbArea .memuList li.active:before {display:block; content:''; width:0; height:0; position:absolute; right:-6px; top:50%; margin-top:-7px; z-index:4; border-top:8px solid transparent; border-bottom:8px solid transparent; border-left:7px solid #2a7cdd;}
 .lnbArea .memuList li.active:after {display:block; content:''; width:0; height:0; position:absolute; right:-7px; top:50%; margin-top:-7px; z-index:3; border-top:9px solid transparent; border-bottom:9px solid transparent; border-left:8px solid rgba(0,0,0,0.2);}
@@ -1197,7 +1225,7 @@ input.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; 
 table tr.contentViewBox {display:none;}
 table tr.contentViewBox td {padding:0; position:relative; border-bottom:0;}
 table tr.contentViewBox td:before {display:block; content:''; width:0px; height:0px; position:absolute; top:-5px; left:100px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:5px solid #aaa;}
-table tr.contentViewBox td .contentBox {border:1px solid #ccc; border-top:0; text-align:left; background:#f1f1f1; padding:20px 30px; overflow:auto; max-height:200px; position:relative; line-height:1.6em; color:#000;}
+table tr.contentViewBox td .contentBox {border:1px solid #ccc; border-top:0; text-align:left; background:#f1f1f1; padding:20px 30px; overflow:auto; max-height:300px; position:relative; line-height:1.6em; color:#000;}
 table tr.contentViewBox td .contentBox img,
 table tr.contentViewBox td .contentBox input,
 table tr.contentViewBox td .contentBox select {max-width:100%;}

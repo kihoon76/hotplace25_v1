@@ -6,12 +6,12 @@
 		_btnBosangPyeonibPano = '#btnBosangPyeonibPano',
 		_btnBosangPyeonibThumbClose = '#btnBosangPyeonibThumbClose',
 		_btnBosangPyeonibList = '#btnBosangPyeonibList',
-		_dvMib = '#dvMib',
+		_dvMibfooter = '#dvMibfooter',
 		_dvBosangPyeonibList = '#dvBosangPyeonibList',
 		_dvBosangPyeonibTable = '#dvBosangPyeonibTable';
 	
 	function _onOffDvSubInfo(disabled) {
-		$(_dvMib).find('span button').prop('disabled', disabled);
+		$(_dvMibfooter).find('button.GROUP').prop('disabled', disabled);
 	}
 	
 	function _getThumb(unu, cbSucc) {
@@ -30,13 +30,13 @@
 				else {
 					cbSucc(data);
 					//
-					var _$dvMunuType = $(_dvBosangPyeonibInfoWin + ' .munuType');
+					var _$dvMibfooter = $(_dvBosangPyeonibInfoWin + ' .mibfooter');
 					
-					_$dvMunuType.data('address', data.mulgeonsojaeji || '');
-					_$dvMunuType.data('pnu', data.pnu || '');
-					_$dvMunuType.data('lng', data.lng || '');
-					_$dvMunuType.data('lat', data.lat || '');
-					_$dvMunuType.data('unu', data.goyubeonho);
+					_$dvMibfooter.data('address', data.mulgeonsojaeji || '');
+					_$dvMibfooter.data('pnu', data.pnu || '');
+					_$dvMibfooter.data('lng', data.lng || '');
+					_$dvMibfooter.data('lat', data.lat || '');
+					_$dvMibfooter.data('unu', data.goyubeonho);
 				}
 				
 				/*$('#bpMulgeonsojaeji').text(data.mulgeonsojaeji);

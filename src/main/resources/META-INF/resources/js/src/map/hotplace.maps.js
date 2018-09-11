@@ -453,6 +453,12 @@
 	
 	var _triggerAddressMarkerFn = null;
 	
+	
+	/** 
+	 * @memberof hotplace.maps 
+	 * @function showAddressMarkerWin 
+	 * @desc 경공매, 투자유망 검색시 마커 click trigger.
+	 */
 	maps.showAddressMarkerWin = function() {
 		if(_markers.ADDRESS_SEARCH.m.length == 1) {
 			if(_triggerAddressMarkerFn) {

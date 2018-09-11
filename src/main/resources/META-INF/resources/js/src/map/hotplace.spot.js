@@ -24,8 +24,8 @@
 	var _pnu, _address, _lng, _lat;
 	
 	//주소검색후 해당지점에 대한 정보선택
-	spot.selectCategory = function(el, mulgeonType, unu) {
-		_spotInfo(el);
+	spot.selectCategory = function(el, mulgeonType, unu, fromMulgeon) {
+		_spotInfo(el, fromMulgeon);
 		var category = $(el).data('category');
 		
 		switch(category) {
@@ -58,8 +58,8 @@
 	
 	
 	
-	function _spotInfo(el) {
-		var $el = $(el).closest('.munuType');
+	function _spotInfo(el, fromMulgeon) {
+		var $el = (fromMulgeon) ? $(el).closest('.mibfooter') : $(el).closest('.munuType');
 		_pnu = $el.data('pnu');
 		_address = $el.data('address');
 		_lng = $el.data('lng');
