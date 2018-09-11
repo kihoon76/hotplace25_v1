@@ -368,6 +368,9 @@ $(document).ready(function() {
 				hotplace.maps.trigger(null, 'zoom_changed');
 				hotplace.maps.disablePanningStart();
 			}
+		},
+		'tilesloaded': function() {
+			hotplace.maps.showAddressMarkerWin();
 		}
 	}, function(map) {
 		//hotplace.maps.showCellLayer();
@@ -377,8 +380,6 @@ $(document).ready(function() {
 		_initFirstScreen();
 		checkBrowser(_showIntro);
 	});
-	
-	
 	
 	
 	function _initFirstScreen() {

@@ -440,7 +440,6 @@
 		ADDRESS_SEARCH: { m: [], icon: 'marker_search.png' }
 	};
 	
-	
 	/** 
 	 * @memberof hotplace.maps 
 	 * @function getMarkerIcon 
@@ -450,6 +449,17 @@
 	 */
 	maps.getMarkerIcon = function(markerType) {
 		return _markers[markerType].icon;
+	}
+	
+	var _triggerAddressMarkerFn = null;
+	
+	maps.showAddressMarkerWin = function() {
+		if(_markers.ADDRESS_SEARCH.m.length == 1) {
+			if(_triggerAddressMarkerFn) {
+				_triggerAddressMarkerFn();
+				_triggerAddressMarkerFn = null;
+			}
+		}
 	}
 	
 	/** 
@@ -1871,6 +1881,8 @@
 	 * @param {object}  options 옵션
 	 * @param {boolean} options.hasInfoWindow 클릭시 infoWindow 사용여부
 	 * @param {string}  options.infoWinFormName 
+	 * @param {boolean} options.noPan 주소검색 마커에 panning이 일어나는지 여부
+	 * @param {boolean} options.isClickTrigger 마커가 표시되면서 클릭이벤트가 발생할지 여부
 	 * @param {number}  options.radius 마커주위 반경 (0일경우 표시안함) 
 	 * @param {boolean} options.isClustering 마커 클러스트링 설정여부
 	 * @param {string}  options.icon 아이콘 이미지명 
@@ -1968,6 +1980,7 @@
 		}
 		
 		if(listeners) {
+			_venderEvent.clearInstanceListeners(newMarker);
 			for(var eventName in listeners) {
 				_venderEvent.addListener(newMarker, eventName, function($$eventName, $$newInfoWindow) {
 					return function(e) {
@@ -1975,6 +1988,17 @@
 						listeners[$$eventName](_venderMap, newMarker, $$newInfoWindow, e);
 					}
 				}(eventName, newInfoWindow));
+			}
+			
+			if(options && options.isClickTrigger) {
+				_triggerAddressMarkerFn = function() {
+					_venderEvent.trigger(newMarker, 'click');
+				}
+				
+				if(options.noPan) {
+					_triggerAddressMarkerFn();
+					_triggerAddressMarkerFn = null;
+				}
 			}
 		}
 		
@@ -2367,6 +2391,18 @@
 	}
 	
 	maps.panToLikeAddressSearch = function(lat, lng, menuName, winDatas, closeFn, options, zoomLevel) {
+		var noPan = false;
+		
+		//같은 줌 레벨에 있고 같은 bounds안에 있는지 검사
+		if(_getCurrentLevel() == (zoomLevel || hotplace.config.addrSearchPanLevel)) {
+			if(!(_currentBounds.swx > lng || _currentBounds.nex < lng ||
+				 _currentBounds.swy > lat || _currentBounds.ney < lat)) {
+				
+				noPan = true;
+				
+			}
+		}
+		
 		maps.panToBounds(lat, lng, function() {
 			if(menuName) hotplace.dom.hideLnbContent($('#' + menuName + ' .close'));
 		     
@@ -2377,7 +2413,7 @@
 			maps.getMarker(_markerTypes.ADDRESS_SEARCH, {location:[lng, lat], info: {unu:unu}}, {
 				'click' : function(map, newMarker, newInfoWindow, e) {
 					
-					var target = e.domEvent.currentTarget;
+					var target = (e.domEvent == null) ? e.overlay.eventTarget/*trigger로 들어옴*/ : e.domEvent.currentTarget/*click*/;
 					var isClose = target.childNodes[0].getAttribute('data-active');
 					//닫기버튼 (오류발생: target이 항상 div로 들어옴)
 					if(isClose/*nodeName == 'i' || nodeName == 'button'*/) {
@@ -2426,6 +2462,7 @@
 				isAjaxContent: (options && options.isAjaxContent != undefined) ? options.isAjaxContent : false,
 				infoWinFormName: (options && options.infoWinFormName) ? options.infoWinFormName : 'win/addrSearchWin',
 				winContent: (options && options.winContent) ? options.winContent : null,
+				isClickTrigger: (options && options.isClickTrigger) ? true : false,
 				radius: 0,
 				datas: {
 					params : winDatas || {}
@@ -2435,7 +2472,8 @@
 					x: 26,
 					y: 36
 				},
-				zIndex: 1000
+				zIndex: 1000,
+				noPan: noPan
 			})
 		}, zoomLevel);
 	}

@@ -235,7 +235,8 @@
 					infoWinFormName: 'gyeongmaeForm',
 					mulgeonGubun: 'K',
 					unu: data.unuGyeongmae,
-					isAjaxContent: true
+					isAjaxContent: true,
+					isClickTrigger: true
 				};
 				break;
 			case 'A':
@@ -248,7 +249,13 @@
 					infoWinFormName: 'gongmaeForm',
 					mulgeonGubun: 'G',
 					unu: data.unuGongmae,
-					isAjaxContent: true
+					isAjaxContent: true,
+					isClickTrigger: true
+				};
+				break;
+			case 'X' : //투자유망
+				options = {
+					isClickTrigger: true
 				};
 				break;
 			}
@@ -962,7 +969,7 @@
 			    movableColumns:true,
 			    resizableRows:true,
 			    rowClick: function(e, row) {
-			    	_rowClickHandler('T', row, d);
+			    	_rowClickHandler('T', row, d, 'X');
 			    },
 			}, d, [{column: 'hpgrade', dir:'asc'}]);
 		}
