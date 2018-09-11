@@ -285,6 +285,7 @@ $(document).ready(function() {
 		var s = String.fromCharCode(e.which);
 		if(s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey ) {
 			$(loginCapslock).show();
+			$(this).val('');
 			return false;
 		}
 		else {
