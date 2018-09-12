@@ -57,10 +57,13 @@
         </div>
     </div>
     <div class="mibfooter" data-address="{{jibeon}}" data-pnu="{{pnu}}" data-lng="{{lng}}" data-lat="{{lat}}">
-    	<button type="button" class="profit"  onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="SUJI_BOONSEOK">수지분석</button>
-		<button type="button" class="gwansim" onclick="hotplace.spot.selectCategory(this, 'S', null, true)" data-category="GWANSIM_MULGEON">관심물건등록</button>
-		<button type="button" class="tojiuse" onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="TOJI_USE_LIMT">토지기본정보</button>	
-    	<button type="button" id="btnSilgeolaePano" class="positionView" data-name="위치보기">위치보기</button>
-        <button type="button" id="btnSilgeolaeThumbClose" class="close">닫기</button>
+    	<ul>
+    		<li><button type="button" class="profit"  onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="SUJI_BOONSEOK">수지분석</button></li>
+			<li><button type="button" class="gwansim" onclick="hotplace.spot.selectCategory(this, 'S', null, true)" data-category="GWANSIM_MULGEON">관심물건등록</button></li>
+			<li><button type="button" class="tojiuse" onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="TOJI_USE_LIMT">토지기본정보</button></li>	
+    		<li><button type="button" id="btnSilgeolaePano" class="positionView" data-name="위치보기">위치보기</button></li>
+    		<li><button type="button" class="link" data-name="물건상세조회" disabled>물건상세조회</button></li>
+        	<li><button type="button" id="btnSilgeolaeThumbClose" class="close">닫기</button></li>
+        </ul>
     </div>
 </div>

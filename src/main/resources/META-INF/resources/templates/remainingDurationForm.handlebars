@@ -18,21 +18,24 @@
 				<div class="unit_cont bgWhite">
 					<table class="tableStyle gridStyle  topBold center">
 						<colgroup>
-							<col style="width:30%;">
 							<col style="width:20%;">
-							<col style="width:50%;">
+							<col style="width:20%;">
+							<col style="width:40%;">
+							<col style="width:20%;">
 						</colgroup>
 						<tbody>
 							<tr>
 								<th class="center">이용서비스</th>
 								<th class="center">만기일</th>
 								<th class="center">남은일수</th>
+								<th class="center">서비스 연장</th>
 							</tr>
 							{{#each list}}
 							<tr>
 								<th class="center">{{authName}}</th>
 								<th class="center">{{expire}}</th>
 								<th class="center">만기 <strong class="color_red" style="font-size:1.5em;">{{remain}}</strong>일 전입니다</th>
+								<td class="center"><a href="#" class="btnstyle middle blue" onclick="/*hotplace.dom.goPaymentFromExpireMsgForm()*/">결제하기</a></td>
 							</tr>
 							{{/each}}
 						</tbody>

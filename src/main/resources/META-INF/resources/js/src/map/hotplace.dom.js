@@ -1012,6 +1012,11 @@
 		}
 	}
 	
+	dom.goPaymentFromExpireMsgForm = function() {
+		dom.closeModal();
+		dom.showPaymentForm();
+	}
+	
 	
 	dom.showLoginForm = function(fn) {
 		_appendModalPopup('loginForm');

@@ -191,13 +191,13 @@
 		$dvList.show();
 		$dvTable.hide();
 		_onOffDvSubInfo(true);
-		$(_btnBosangPyeonibPano).hide();
+		$(_btnBosangPyeonibPano).prop('disabled', true); //hide();
 	}
 	
 	function _viewItem() {
 		$(_dvBosangPyeonibList).hide();
 		$(_dvBosangPyeonibTable).show();
-		$(_btnBosangPyeonibPano).show();
+		$(_btnBosangPyeonibPano).prop('disabled', false);//show();
 		
 	}
 	
@@ -209,15 +209,15 @@
 			$dvList.show();
 			$dvTable.hide();
 			
-			$(_btnBosangPyeonibList).show();
-			$(_btnBosangPyeonibPano).hide();
+			$(_btnBosangPyeonibList).prop('disabled', false); //show();
+			$(_btnBosangPyeonibPano).prop('disabled', true); //hide();
 		}
 		else {
 			$dvList.hide();
 			$dvTable.show();
 			
-			$(_btnBosangPyeonibList).hide();
-			$(_btnBosangPyeonibPano).show();
+			$(_btnBosangPyeonibList).prop('disabled', true); //hide();
+			$(_btnBosangPyeonibPano).prop('disabled', false);//show();
 		}
 	}
 

@@ -194,6 +194,8 @@ input[type='checkbox'] + label.labelCh:before {background-image:url('../img/inpu
 input[type='checkbox'] + label.labelCh:before         {background-position:0 bottom;}
 input[type='checkbox']:checked + label.labelCh:before {background-position:0 top;}
 
+
+
 /* table */
 table {table-layout:fixed; width:100%; text-align:center;}
 table.tableStyle tr {height:34px;}
@@ -396,7 +398,7 @@ body	 {min-height:600px;}
 .mapInnerBox.type2 .mibHeader .titIcon.deunglog       {background:#a73710;} /* 등록메물 */
 
 .mapInnerBox.type2 .mibBody {display:block; overflow:auto; max-height:;  background:#333; border-radius:0px 5px 0 0;} 
-.mapInnerBox.type2 .mibBody .tableType {overflow:auto; clear:both; margin:30px 20px 10px;}
+.mapInnerBox.type2 .mibBody .tableType {overflow:auto; clear:both; margin:30px 20px 20px;}
 .mapInnerBox.type2 .mibBody .tableType table th {width:30%;}
 .mapInnerBox.type2 .mibBody .tableType table th,
 .mapInnerBox.type2 .mibBody .tableType table td {background:none;}
@@ -419,34 +421,46 @@ body	 {min-height:600px;}
 .mapInnerBox.type2 .mibBody .tableType table.tableStyle tbody tr:hover {background:none;}
 .mapInnerBox.type2 .mibBody .tableType table.tableStyle tbody tr:hover td {font-weight:normal;}
 
-.mapInnerBox.type2 .mibfooter {text-align:center; padding:0px 20px 20px; overflow:auto; background:#333; min-height:50px; clear:both; border-radius:0 0 5px 5px;}
+
+/* 팝업 하단 버튼 */
+.mapInnerBox.type2 .mibfooter {
+  text-align:center; border-top:solid 1px #222; padding:0 0 0; overflow:auto; background:#333; min-height:50px; clear:both; border-radius:0 0 5px 5px;
+}
+.mapInnerBox.type2 .mibfooter ul {font-size:0;}
+.mapInnerBox.type2 .mibfooter ul:after {display:block; clear:both; content:"";}
+.mapInnerBox.type2 .mibfooter ul li {float:left; width:33.33%; padding:10px 10px 10px 10px; text-align:left;}
+.mapInnerBox.type2 .mibfooter ul li + li {border-left:solid 1px #222;}
+.mapInnerBox.type2 .mibfooter ul li:nth-child(1),
+.mapInnerBox.type2 .mibfooter ul li:nth-child(2),
+.mapInnerBox.type2 .mibfooter ul li:nth-child(3) {border-bottom:solid 1px #222;}
+.mapInnerBox.type2 .mibfooter ul li:nth-child(1),
+.mapInnerBox.type2 .mibfooter ul li:nth-child(4) {border-left:0}
+
 
 .mapInnerBox.type2 .mibfooter button {
   height:30px; line-height:30px;  text-align:center; color:#fff; 
-  position:relative; font-size:14px; font-weight:500; padding:0 30px;
+  position:relative; font-size:13px; font-weight:normal; padding:0 0 0 30px;
 }
 .mapInnerBox.type2 .mibfooter button:after {
 	font-family: 'AMB-iconfont' !important; speak:none; font-style:normal; font-weight:normal; font-variant:normal; text-transform:none; line-height:1;
 	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 	display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
 }
-
-/* 팝업 하단 버튼 */
-.mapInnerBox.type2 .mibfooter button.profit {padding:0 15px 0 30px;}
+.mapInnerBox.type2 .mibfooter button.profit {}
 .mapInnerBox.type2 .mibfooter button.profit:after {
   display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
   content:""; position:absolute; top:0; left:0; background:url('../img/infoWindow_icon.png') no-repeat; background-position:0 0;
 }
 .mapInnerBox.type2 .mibfooter button.profit:hover {color:#fff;}
 
-.mapInnerBox.type2 .mibfooter button.gwansim {padding:0 15px 0 30px;}
+.mapInnerBox.type2 .mibfooter button.gwansim {}
 .mapInnerBox.type2 .mibfooter button.gwansim:after {
   display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
   content:""; position:absolute; top:0; left:0; background:url('../img/infoWindow_icon.png') no-repeat; background-position:0 -30px;
 }
 .mapInnerBox.type2 .mibfooter button.gwansim:hover {color:#fff;}
 
-.mapInnerBox.type2 .mibfooter button.tojiuse {padding:0 15px 0 30px;}
+.mapInnerBox.type2 .mibfooter button.tojiuse {}
 .mapInnerBox.type2 .mibfooter button.tojiuse:after {
   display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
   content:""; position:absolute; top:0; left:0; background:url('../img/infoWindow_icon.png') no-repeat; background-position:0 -90px;
@@ -1113,8 +1127,7 @@ input.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; 
 .mulgunList li:hover .rdchBox {animation:ani_down 0.2s ease-out 0s 1 alternate;}
 .mulgunList li .rdchBox i.icon {display:inline-block; margin:-2px 2px 0;}
 .mulgunList li .rdchBox i.icon img {height:24px; margin-top:-2px;}
-/*.mulgunList li .rdchBox i.icon.level  img {height:12px; vertical-align:middle; margin-top:0px;}*/
-.mulgunList li .rdchBox i.icon.level  img  {height:auto !important;vertical-align:middle;margin-top:0px;}
+.mulgunList li .rdchBox i.icon.level img {height:auto !important; vertical-align:middle; margin-top:0px;}
 .mulgunListTerm {border-top:1px solid #ccc; padding:15px 18px 10px}
 .mulgunListTerm .tit {display:block; overflow:hidden; font-weight:500; font-size:12px; margin:0 3px 5px;}
 

@@ -42,11 +42,13 @@
     </div>
     
     <div id="dvMibfooter" class="mibfooter" data-address="" data-pnu="" data-lng="" data-lat="">
-    	<button type="button" class="profit GROUP"  onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="SUJI_BOONSEOK">수지분석</button>
-		<button type="button" class="gwansim GROUP" onclick="hotplace.spot.selectCategory(this, '{{kindCode}}', null, true)" data-category="GWANSIM_MULGEON">관심물건등록</button>
-		<button type="button" class="tojiuse GROUP" onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="TOJI_USE_LIMT">토지기본정보</button>	
-    	<button type="button" id="btnBosangPyeonibPano" class="positionView" data-name="위치보기">위치보기</button>
-    	<button type="button" id="btnBosangPyeonibList" class="goList" style="displat:none;">목록으로</button>
-        <button type="button" id="btnBosangPyeonibThumbClose" class="close">닫기</button>
+    	<ul>
+    		<li><button type="button" class="profit GROUP"  onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="SUJI_BOONSEOK">수지분석</button></li>
+			<li><button type="button" class="gwansim GROUP" onclick="hotplace.spot.selectCategory(this, '{{kindCode}}', null, true)" data-category="GWANSIM_MULGEON">관심물건등록</button></li>
+			<li><button type="button" class="tojiuse GROUP" onclick="hotplace.spot.selectCategory(this, null, null, true)" data-category="TOJI_USE_LIMT">토지기본정보</button></li>	
+    		<li><button type="button" id="btnBosangPyeonibPano" class="positionView GROUP" data-name="위치보기">위치보기</button></li>
+    		<li><button type="button" id="btnBosangPyeonibList" class="goList">목록으로</button></li>
+        	<li><button type="button" id="btnBosangPyeonibThumbClose" class="close">닫기</button></li>
+        </ul>
     </div>
 </div>
