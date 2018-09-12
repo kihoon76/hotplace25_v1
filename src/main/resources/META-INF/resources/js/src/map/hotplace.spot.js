@@ -182,7 +182,7 @@
                 		});
                 	}
                 	else {
-                		jqXHR.errCode = hotplace.error.GWANSIM_REG;
+                		jqXHR.errCode = data.errCode;
                 	}
                 }
                 else {
