@@ -323,6 +323,7 @@ $(document).ready(function() {
 					//만기일 일주일전이면 팝업공지
 					if(hasCookie && jo.datas.length > 0) {
 						hotplace.dom.showExpireMsgForm(function() {
+							//login,out 아이콘 변경
 							hotplace.dom.toggleLogin();
 						}, {list: jo.datas});
 					}
