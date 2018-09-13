@@ -20,6 +20,7 @@ import com.hotplace25.domain.Gyeongmae;
 import com.hotplace25.domain.GyeongmaeImage;
 import com.hotplace25.domain.QnA;
 import com.hotplace25.domain.Silgeolae;
+import com.hotplace25.domain.SystemUpdate;
 import com.hotplace25.domain.Yaggwan;
 import com.hotplace25.util.DataUtil;
 
@@ -162,6 +163,10 @@ public class HotplaceService {
 		}
 		
 		return g;
+	}
+	
+	public SystemUpdate getSystemUpdateInfo() {
+		return hotplaceDao.selectSystemUpdateInfo();
 	}
 	
 	public String getCurrentYear() {

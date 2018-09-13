@@ -327,7 +327,6 @@ $(document).ready(function() {
 					
 				}
 			}
-			
 		},
 		'click' : function(map, latlng) {
 			console.log(latlng)
@@ -335,8 +334,6 @@ $(document).ready(function() {
 			if($('#btnStreetView').data('switch') == 'on') {
 				hotplace.streetview.startPanorama(map, latlng);
 			}
-			
-			
 		},
 		'mousedown': function() {
 			hotplace.dom.hideContextMenu();
@@ -378,7 +375,8 @@ $(document).ready(function() {
 		hotplace.dom.showAutoYearRangeDiv();
 		hotplace.dom.enableYearRangeDiv(false);
 		_initFirstScreen();
-		checkBrowser(_showIntro);
+		//checkBrowser(_showIntro);
+		checkBrowser(_showUpdateInfo); 
 	});
 	
 	
@@ -401,6 +399,18 @@ $(document).ready(function() {
 		
 		if(hasCookie) {
 			hotplace.dom.showIntroMain();
+		}
+	}
+	
+	function _showUpdateInfo() {
+		var updateInfo = $('body').data('update');
+		
+		if(!updateInfo) return;
+		
+		var hasCookie = !$.cookie('update');
+		
+		if(hasCookie || $.cookie('update') != updateInfo.version) {
+			hotplace.dom.showUpdateInfo(updateInfo);
 		}
 	}
 	

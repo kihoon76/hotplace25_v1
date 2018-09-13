@@ -37,6 +37,7 @@ import com.hotplace25.domain.HpSearch;
 import com.hotplace25.domain.Notice;
 import com.hotplace25.domain.QnA;
 import com.hotplace25.domain.Silgeolae;
+import com.hotplace25.domain.SystemUpdate;
 import com.hotplace25.reporter.PdfItext;
 import com.hotplace25.service.HotplaceService;
 import com.hotplace25.service.NoticeService;
@@ -78,9 +79,15 @@ public class HotplaceController {
 		request.setAttribute("currentX", currentX);
 		request.setAttribute("currentY", currentY);
 		String currentYear = "";
+		SystemUpdate su = null;
 		
 		try {
 			currentYear = hotplaceService.getCurrentYear();
+			su = hotplaceService.getSystemUpdateInfo();
+			
+			if(su != null) {
+				request.setAttribute("update", new Gson().toJson(su));
+			}
 		}
 		catch(Exception e) {
 			Date date = new Date(); 

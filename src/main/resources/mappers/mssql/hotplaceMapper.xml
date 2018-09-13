@@ -716,7 +716,15 @@
 	
 	<!-- 상담신청 -->
 	<insert id="insertQuestion" parameterType="QnA">
-	insert into [웹].[dbo].[문의사항](연락처, 문의사항) 
-	values (#{phone}, #{question})
+		insert into [웹].[dbo].[문의사항](연락처, 문의사항) 
+		values (#{phone}, #{question})
 	</insert>
+	
+	<!-- update 알림 -->
+	<select id="selectSystemUpdateInfo" resultType="SystemUpdate">
+		select top 1 버전 version, 내용 content, 팝업템플릿 tempNum
+		  from [웹].[dbo].[업데이트관리]
+		 where DATEDIFF(DD, [적용일자], getDate()) between 0 and 10 
+		 order by 일련번호 desc 
+	</select>
 </mapper>

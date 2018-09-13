@@ -12,6 +12,7 @@ import com.hotplace25.domain.GongmaeDetail;
 import com.hotplace25.domain.Gyeongmae;
 import com.hotplace25.domain.QnA;
 import com.hotplace25.domain.Silgeolae;
+import com.hotplace25.domain.SystemUpdate;
 import com.hotplace25.domain.Yaggwan;
 
 public interface HotplaceDao {
@@ -59,4 +60,6 @@ public interface HotplaceDao {
 	public String selectCurrentDate();
 
 	public void insertQuestion(QnA qna);
+
+	public SystemUpdate selectSystemUpdateInfo();
 }

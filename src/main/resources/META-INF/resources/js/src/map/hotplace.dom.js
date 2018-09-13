@@ -1175,6 +1175,31 @@
 		});
 	}
 	
+	dom.showUpdateInfo = function(updateInfo) {
+		var formName = '',
+			closeBtn = '';
+		
+		if(updateInfo.tempNum == '1') {
+			formName = 'updateAlarmForm';
+			closeBtn = '#btnUpdateInfoClose';
+		}
+		else {
+			formName = 'updateAlarmForm2';
+			closeBtn = '#btnUpdateInfoClose2';
+		}
+		
+		_appendModalPopup(formName, null, updateInfo);
+		dom.openModal('', {width:'600'}, null, function() {
+			$(closeBtn)
+			.off('click')
+			.on('click', function() {
+				$.cookie('update', updateInfo.version, {expires:10, path: '/'});
+				
+				dom.closeModal();
+			});
+		});
+	}
+	
 	dom.showLogoutForm = function(fn) {
 		dom.showConfirmBox(function() {
 			dom.addBodyAllMask();

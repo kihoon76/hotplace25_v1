@@ -17,6 +17,7 @@ import com.hotplace25.domain.GongmaeDetail;
 import com.hotplace25.domain.Gyeongmae;
 import com.hotplace25.domain.QnA;
 import com.hotplace25.domain.Silgeolae;
+import com.hotplace25.domain.SystemUpdate;
 import com.hotplace25.domain.Yaggwan;
 
 @Repository("hotplaceDao")
@@ -144,5 +145,10 @@ public class HotplaceDaoImpl implements HotplaceDao {
 	@Override
 	public String selectCurrentDate() {
 		return msSqlSession.selectOne(namespace + ".selectCurrentDate");
+	}
+
+	@Override
+	public SystemUpdate selectSystemUpdateInfo() {
+		return msSqlSession.selectOne(namespace + ".selectSystemUpdateInfo");
 	}
 }
