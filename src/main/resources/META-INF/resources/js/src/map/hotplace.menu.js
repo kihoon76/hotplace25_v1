@@ -711,13 +711,13 @@
 						'rdoId': 'addr'
 					}
 					
-					if(data.length > 1) {
+					if(data.length >= 1/*data.length > 1*/) {
 						var result = (hotplace.dom.getTemplate('addrSearchResult'))(dataForm);
 						_bindAddressSearchResult(result);
 						_ctrlMoveMapInAddressSearch(true);
 					}
 					else {
-						if(data.length == 1) {
+						/*if(data.length == 1) {
 							_bindAddressSearchResult('');
 							_ctrlMoveMapInAddressSearch(false);
 							
@@ -728,13 +728,13 @@
 								lat: data[0][2],
 							});
 						}
-						else {
+						else {*/
 							//검색 결과가 없을때 
 							console.log(data.length)
 							var r = data.length;
 							_bindAddressSearchResult(_emptyAddressSearchResultForm((r == undefined)? 'L':'R'));
 							_ctrlMoveMapInAddressSearch(false);
-						}
+						/*}*/
 					}
 					
 				}, true);

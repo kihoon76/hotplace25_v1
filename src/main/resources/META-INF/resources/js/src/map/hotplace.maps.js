@@ -431,13 +431,13 @@
 	 */
 	var _markers = {
 		RADIUS_SEARCH : { m: [], c: [], url: '' },
-		GYEONGMAE : { m: [], url: 'gyeongmaemarker', icon:'gyeongmae.png'/*, trigger: 'mouseover'*/ },
-		GONGMAE : { m: [], url: 'gongmaemarker', icon: 'gongmae.png'/*, trigger: 'mouseover'*/ },
-		BOSANG: { m: [], url: 'bosangmarker', icon: 'bosang.png', clusterIcon:'bosangC.png', level:10, clustering: true, stopLevel: 11},
-		PYEONIB: { m: [], url: 'pyeonibmarker', icon: 'pyeonib.png', clusterIcon:'pyeonibC.png', level:10, clustering: true, stopLevel: 11},
+		GYEONGMAE : { m: [], url: 'gyeongmaemarker', icon:'gyeongmae.png'/*, trigger: 'mouseover'*/ , zIndex: 7000},
+		GONGMAE : { m: [], url: 'gongmaemarker', icon: 'gongmae.png'/*, trigger: 'mouseover'*/ , zIndex: 5000 },
+		BOSANG: { m: [], url: 'bosangmarker', icon: 'bosang.png', clusterIcon:'bosangC.png', level:10, clustering: true, stopLevel: 11, zIndex: 3000},
+		PYEONIB: { m: [], url: 'pyeonibmarker', icon: 'pyeonib.png', clusterIcon:'pyeonibC.png', level:10, clustering: true, stopLevel: 11, zIndex: 1000},
 		SILGEOLAE: { m: [], url: 'silgeolaemarker', icon: 'silgeolae.png', level:13 },
 		ACCEPT_BUILDING: { m: [], url: 'acceptbuildingmarker', icon: 'acceptbuilding.png', level:13 },
-		ADDRESS_SEARCH: { m: [], icon: 'marker_search.png' }
+		ADDRESS_SEARCH: { m: [], icon: 'marker_search.png', zIndex: 10000 }
 	};
 	
 	/** 
@@ -1494,7 +1494,9 @@
 			}
 		}
 		
-		_createMarkers(currentLevel, startIdx, markerType/*_markerTypes.GYEONGMAE*/, listeners, {
+		var addOpt = (_markers[markerType].zIndex == undefined) ? {} : {zIndex: _markers[markerType].zIndex};
+		
+		_createMarkers(currentLevel, startIdx, markerType/*_markerTypes.GYEONGMAE*/, listeners, $.extend(addOpt, {
 			hasInfoWindow: true,
 			isAjaxContent: true,
 			radius:0,
@@ -1503,7 +1505,7 @@
 			isClustering: _markers[markerType].clustering,
 			stopLevel: _markers[markerType].stopLevel,
 			curLevel: currentLevel
-		});
+		}));
 	}
 	
 	/** 
@@ -2115,7 +2117,9 @@
 					}(_markerTypes[activeMarkers[a]]));
 				}
 				
-				_createMarkers(_currentLevel, startIdx, _markerTypes[activeMarkers[a]], listeners, {
+				var addOpt = (_markers[activeMarkers[a]].zIndex == undefined) ? {} : {zIndex: _markers[activeMarkers[a]].zIndex};
+				
+				_createMarkers(_currentLevel, startIdx, _markerTypes[activeMarkers[a]], listeners, $.extend(addOpt, {
 					hasInfoWindow: true,
 					isAjaxContent: true,
 					radius:0,
@@ -2123,7 +2127,7 @@
 					clusterIcon: _markers[activeMarkers[a]].clusterIcon,
 					isClustering: _markers[activeMarkers[a]].clustering,
 					stopLevel: _markers[activeMarkers[a]].stopLevel
-				});
+				}));
 			}
 		}
 	};
@@ -2478,7 +2482,7 @@
 					x: 26,
 					y: 36
 				},
-				zIndex: 1000,
+				zIndex: _markers.ADDRESS_SEARCH.zIndex,//1000,
 				noPan: noPan
 			})
 		}, zoomLevel);

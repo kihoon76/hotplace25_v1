@@ -1001,7 +1001,7 @@
 				}
 				
 				if(!isDup) {
-					//max 10개 제한
+					//max 30개 제한
 					if(len == 30) {
 						obj.data.shift();
 					}
@@ -1026,7 +1026,8 @@
 			var item = localStorage.getItem(key);
 			if(item) {
 				item = JSON.parse(item);
-				return item.data;
+				//return item.data;
+				return item.data.reverse();
 			}
 			
 			return null;
