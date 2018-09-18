@@ -410,7 +410,7 @@ $(document).ready(function() {
 		var hasCookie = !$.cookie('update');
 		var preUpdateIdx = (hasCookie) ? null : parseInt($.cookie('update'), 10);
 		
-		if(hasCookie || updateIdx < parseInt(updateInfo.idx, 10)) {
+		if(hasCookie || preUpdateIdx < parseInt(updateInfo.idx, 10)) {
 			hotplace.dom.showUpdateInfo(updateInfo);
 		}
 	}
