@@ -722,7 +722,7 @@
 	
 	<!-- update 알림 -->
 	<select id="selectSystemUpdateInfo" resultType="SystemUpdate">
-		select top 1 버전 version, 내용 content, 팝업템플릿 tempNum
+		select top 1 일련번호 idx, 버전 version, 내용 content, 팝업템플릿 tempNum
 		  from [웹].[dbo].[업데이트관리]
 		 where DATEDIFF(DD, [적용일자], getDate()) between 0 and 10 
 		 order by 일련번호 desc 

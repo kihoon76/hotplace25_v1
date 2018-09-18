@@ -408,8 +408,9 @@ $(document).ready(function() {
 		if(!updateInfo) return;
 		
 		var hasCookie = !$.cookie('update');
+		var preUpdateIdx = (hasCookie) ? null : parseInt($.cookie('update'), 10);
 		
-		if(hasCookie || $.cookie('update') != updateInfo.version) {
+		if(hasCookie || updateIdx < parseInt(updateInfo.idx, 10)) {
 			hotplace.dom.showUpdateInfo(updateInfo);
 		}
 	}

@@ -5,6 +5,7 @@ import org.apache.ibatis.type.Alias;
 @Alias("SystemUpdate")
 public class SystemUpdate {
 
+	private String idx;
 	private String version;
 	private String content;
 	private String tempNum;
@@ -27,6 +28,10 @@ public class SystemUpdate {
 	public void setTempNum(String tempNum) {
 		this.tempNum = tempNum;
 	}
-	
-	
+	public String getIdx() {
+		return idx;
+	}
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
 }

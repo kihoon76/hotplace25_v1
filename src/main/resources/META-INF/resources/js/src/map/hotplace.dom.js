@@ -1193,7 +1193,7 @@
 			$(closeBtn)
 			.off('click')
 			.on('click', function() {
-				$.cookie('update', updateInfo.version, {expires:10, path: '/'});
+				$.cookie('update', updateInfo.idx, {expires:10, path: '/'});
 				
 				dom.closeModal();
 			});
