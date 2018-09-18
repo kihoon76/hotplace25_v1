@@ -1188,6 +1188,8 @@
 			closeBtn = '#btnUpdateInfoClose2';
 		}
 		
+		updateInfo.content = updateInfo.content.replace('\u003c', '<').replace('\u003e', '>');
+		
 		_appendModalPopup(formName, null, updateInfo);
 		dom.openModal('', {width:'600'}, null, function() {
 			$(closeBtn)
