@@ -9,24 +9,9 @@
  * @namespace hotplace
  * */
 (function(hotplace, $) {
-	
+		
 	var _version = '1.0';
 	var _ROOT_CONTEXT = $('body').data('url');
-	
-	/*$.browser = {
-		msie: false,
-		chrome: false,
-		firefox: false,
-		safari: false,
-		opera: false
-	}; */
-	/*jQuery.browser() removed
-
-	The jQuery.browser() method has been deprecated since jQuery 1.3 and is removed in 1.9.
-	If needed, it is available as part of the jQuery Migrate plugin.
-	We recommend using feature detection with a library such as Modernizr.
-	*/
-    //$.browser.version = 0;
 	
     hotplace.browser = function() {
     	var b = {

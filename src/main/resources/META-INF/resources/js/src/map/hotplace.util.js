@@ -2,6 +2,7 @@
  * @namespace hotplace.util
  * */
 (function(util, $) {
+
 	util.maskAll = function(val, shape) {
 		var s = '';
 		var len = val.length;
@@ -181,6 +182,18 @@
 		
 		return dateStr;
 	}
+	
+	util.makeJiyeokSelect = function($target, data) {
+		var html = ['<option value="" selected>전체</option>'];
+		var len = data.length;
+		for(var i=0; i<len; i++) {
+			html.push('<option value="' + data[i].code + '">' + data[i].name + '</option>');
+		}
+		
+		//$target.html('');
+		$target.html(html.join(''));
+	}
+	
 }(
 	hotplace.util = hotplace.util || {},
 	jQuery

@@ -132,4 +132,8 @@ public class SearchService {
 	public String getAddrToPnu(String addr) {
 		return searchDao.selectPnuFromAddress(addr);
 	}
+
+	public List<Map<String, String>> getJiyeok(String code) {
+		return searchDao.selectJiyeok(code);
+	}
 }

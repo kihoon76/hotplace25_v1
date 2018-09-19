@@ -293,4 +293,23 @@ public class SearchController {
 		String pnu = searchService.getAddrToPnu(addr);
 		return pnu;
 	}
+	
+	@GetMapping("jiyeok")
+	@ResponseBody
+	public AjaxVO<Map<String, String>> getJiyeok(@RequestParam("code") String code) {
+		AjaxVO<Map<String, String>> vo = new AjaxVO<>();
+		
+		try {
+			List<Map<String, String>> list = searchService.getJiyeok(code);
+			vo.setDatas(list);
+			vo.setSuccess(true);
+		}
+		catch(Exception e) {
+			vo.setSuccess(false);
+			vo.setErrMsg(e.getMessage());
+		}
+		
+		return vo;
+		
+	}
 }

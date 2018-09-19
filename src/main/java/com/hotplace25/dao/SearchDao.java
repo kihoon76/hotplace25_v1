@@ -22,4 +22,6 @@ public interface SearchDao {
 
 	String selectPnuFromAddress(String addr);
 
+	List<Map<String, String>> selectJiyeok(String code);
+
 }

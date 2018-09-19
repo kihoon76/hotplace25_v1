@@ -119,4 +119,11 @@
 	)}
 	</select>
 
+	<select id="selectJiyeok" parameterType="string" resultType="map">
+		select distinct [PNU10] as code, 이름 as name
+		  from [지번주소].[dbo].[PNU10DIC]
+		 where [상위PNU10] =  #{code} 
+		   and [대표이름여부] = 'Y'
+	     order by 이름
+	</select>
 </mapper>

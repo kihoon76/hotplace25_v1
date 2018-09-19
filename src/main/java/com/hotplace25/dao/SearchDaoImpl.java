@@ -54,5 +54,10 @@ public class SearchDaoImpl implements SearchDao {
 	public String selectPnuFromAddress(String addr) {
 		return msSqlSession.selectOne(namespace + ".selectPnuFromAddress", addr);
 	}
+
+	@Override
+	public List<Map<String, String>> selectJiyeok(String code) {
+		return msSqlSession.selectList(namespace + ".selectJiyeok", code);
+	}
 	
 }

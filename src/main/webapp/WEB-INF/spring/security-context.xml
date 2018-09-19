@@ -73,6 +73,8 @@
 		<sec:intercept-url pattern="/notice/page/**" access="permitAll"/> 
 		<!-- 주소검색 -->
 		<sec:intercept-url pattern="/mulgeon/search" access="permitAll"/> 
+		<!-- 시구군동검색 -->
+		<sec:intercept-url pattern="/search/jiyeok" access="permitAll"/> 
 		<!-- 패스워드 찾기 -->
 		<sec:intercept-url pattern="/search/password" access="permitAll"/>
 		<!-- 마우스 우클릭 주소찾기 -->
@@ -82,9 +84,6 @@
 		
 		<!-- 개발계 접근금지 메시지 -->
 		<sec:intercept-url pattern="/noAccess" access="permitAll" /> 
-		
-		
-	
 		
 		<sec:intercept-url pattern="/index.jsp" access="permitAll" />
 		<sec:intercept-url pattern="/resources/**" access="permitAll" />

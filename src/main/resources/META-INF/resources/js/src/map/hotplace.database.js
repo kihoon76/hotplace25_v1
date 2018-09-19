@@ -5,6 +5,21 @@
 	
 	var _db = {};
 	
+	var _jiyeokDb = {};
+	
+	//data [{name: '', code: ''}]
+	db.setJiyeokDatabase = function(code, data) {
+		if(code) {
+			if(_jiyeokDb[code]) return;
+			
+			_jiyeokDb[code] = data;
+		}
+	}
+	
+	db.getJiyeokDatabase = function(code) {
+		return _jiyeokDb[code];
+	}
+	
 	/**
 	 * @memberof hotplace.database
 	 * @function getStartXIdx

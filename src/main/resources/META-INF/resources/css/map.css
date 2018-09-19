@@ -1442,8 +1442,8 @@ textarea {resize: none;}
 /* 지역선택 추가/삭제 버튼 */
 .jiSel span {display:inline-block;}
 .jiSel span button {display:inline-block; font-size:0; width:27px; height:27px; vertical-align:middle;}
-.jiSel span button.jiSub {background:url('../img/d_minus.gif') no-repeat 0 0; background-size:27px 27px;}
-.jiSel span button.jiAdd {background:url('../img/d_plus.gif') no-repeat 0 0; background-size:27px 27px;}
+.jiSel span button.jiSub {background:url('../img/jiyeok_minus.gif') no-repeat 0 0; background-size:27px 27px;}
+.jiSel span button.jiAdd {background:url('../img/jiyeok_plus.gif') no-repeat 0 0; background-size:27px 27px;}
 
 /* OPEN 팝업 레이어 */
 .dvOpen {border-radius:10px !important; overflow:hidden !important;}
