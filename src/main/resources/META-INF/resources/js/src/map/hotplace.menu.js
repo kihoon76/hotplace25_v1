@@ -211,6 +211,100 @@
 		return $(':radio[name="gyeongGongType"]:checked').val();
 	}
 	
+	function _getJiyeokDivCount(td) {
+		return $(td + ' > div:visible').length;
+	}
+	
+	function _getJiyeokInfo(param, $target, fn) {
+		hotplace.ajax({
+			url: 'search/jiyeok',
+			method: 'GET',
+			dataType: 'json',
+			data: param,
+			success: function(data, textStatus, jqXHR) {
+				console.log(data)
+				
+				if(!data.success) {
+					jqXHR.errCode = data.errCode;
+				}
+				else {
+					hotplace.database.setJiyeokDatabase(param.code, data.datas);
+					hotplace.util.makeJiyeokSelect($target, data.datas);
+					
+					if(fn) fn();
+				}
+			}
+		});
+	}
+	
+	function _initJiyeokInfo(type, tooltipContainerId) {
+		var selPrefix = (type == 'G') ? '#selGgJiyeok' : '#selJiyeok';
+		var $initEl = (type == 'G') ? $('#dvGgJiyeokSel1') : $('#dvJiyeokSel1');
+		//초기 서울시 구 셋팅
+		if($initEl.data('init') == false) {
+			$initEl.data('init', true);
+			_getJiyeokInfo({code: '11'}, $(selPrefix + '1_2'), function() {
+				hotplace.util.makeJiyeokSelect($(selPrefix + '2_2'), hotplace.database.getJiyeokDatabase('11'));
+				hotplace.util.makeJiyeokSelect($(selPrefix + '3_2'), hotplace.database.getJiyeokDatabase('11'));
+			});
+			
+		}
+		
+		hotplace.dom.initTooltip(tooltipContainerId, {
+			config: {
+				trigger: 'hover',
+				placement: 'left'
+			}
+		});
+	}
+	
+	function _makeJiyeokSelect($target, type, cate) {
+		var code = $target.val();
+		var itemNum = $target.data('item');
+		var selPrefix = (type == 'G') ? '#selGgJiyeok' : '#selJiyeok';
+		var $gugoon = null;
+		var $dong = null;
+		
+		var gugoonSel = '';
+		var dongSel = '';
+		
+		switch(itemNum) {
+		case 1 :
+			if(cate == 'SIDO') gugoonSel = selPrefix + '1_2';
+			dongSel = selPrefix + '1_3';
+			break;
+		case 2 :
+			if(cate == 'SIDO') gugoonSel = selPrefix + '2_2';
+			dongSel = selPrefix + '2_3';
+			break;
+		case 3 :
+			if(cate == 'SIDO') gugoonSel = selPrefix + '3_2';
+			dongSel = selPrefix + '3_3';
+			break;
+		}
+		
+		if(cate == 'SIDO' && gugoonSel) {
+			$gugoon = $(gugoonSel);
+			$gugoon.html('');
+		}
+		
+		if(dongSel) {
+			$dong = $(dongSel);
+			$dong.html('');
+		}
+		
+		if(cate == 'GUGOON' && code == '') return;
+		
+		var data = hotplace.database.getJiyeokDatabase(code);
+		
+		if(data) {
+			hotplace.util.makeJiyeokSelect($gugoon || $dong, data);
+		}
+		else {
+			_getJiyeokInfo({code: code}, $gugoon || $dong);
+		}
+	}
+	
 	/**
      * @private
      * @function _rowClickHandler
@@ -381,7 +475,7 @@
 				'cityPlan':_getCheckboxesData('itemCityPlanTab01'),
 				'cityPlanState':_convertToYN(_getCheckboxesData('itemCityPlanStateTab01')),
 				'bosangPyeonib': _convertToYN(_getCheckboxesData('itemBosangPyeonibTab01')),
-				'jiyeog': ['11'], //_getCheckboxesData('itemJiyeogTab01'),
+				'jiyeog': ['11'], //_getJiyeokData($('#itemJiyeogTab01'), 'X'), //_getCheckboxesData('itemJiyeogTab01'),
 				'jimok':_getCheckboxesData('itemJimokTab01'),
 				'gongsi':_getCheckboxesData('itemGongsiTab01'),
 				'yongdoJiyeog':_getCheckboxesData('itemYongdoJiyeogTab01'),
@@ -449,6 +543,67 @@
 		});
 		
 		return r;
+	}
+	
+	function _getJiyeokData($target, type) {
+		var $els = $target.find('div:visible');
+		var len = $els.length;
+		var selPrefix = (type == 'G') ? '#selGgJiyeok' : '#selJiyeok';
+		var item = null;
+		var sido = '';
+		var gugoon = null;
+		var dong = null;
+		var result = [];
+		var imsi = [];
+		var imsi2 = [];
+		var resultStr = '';
+		
+		for(var i=0; i<len; i++) {
+			item = $els[i].getAttribute('data-item');
+			//sido
+			sido = $(selPrefix + item + '_1').val();
+			gugoon = $(selPrefix + item + '_2').val();
+			dong = $(selPrefix + item + '_3').val();
+			
+			console.log(gugoon + '-' + dong);
+			if(gugoon != '') {
+				if(dong != '') {
+					imsi.push(dong);
+				}
+				else {
+					imsi.push(gugoon);
+				}
+			}
+			else {
+				imsi.push(sido);
+			}
+		}
+		
+		//동일값 제거
+		for(var x=imsi.length - 1; x>=0; x--) {
+			if($.inArray(imsi[x], imsi2) == -1) {
+				imsi2.push(imsi[x]);
+			}
+		}
+		
+		console.log(imsi2);
+		//포함관계 제거
+		var imsi2Len = imsi2.length;
+		
+		for(var y=0; y<imsi2Len; y++) {
+			for(var yy=0; yy<imsi2Len; yy++) {
+				if(y != yy) {
+					if(imsi2[yy].startsWith(imsi2[y]))  break;
+				}
+			}
+			
+			if(yy == imsi2Len) {
+				result.push(imsi2[y]);
+			}
+		}
+		
+		console.log(result);
+		return result;
 	}
 	
 	function _initCheckbox(activeTab) {
@@ -800,35 +955,10 @@
 		}; //검색버튼이 활성화되면 true 아니면 false
 		
 	
-	function _getJiyeokDivCount() {
-		return $(_itemJiyeogTab01Td + ' > div:visible').length;
-	}
-	
-	function _getJiyeokInfo(param, $target, fn) {
-		hotplace.ajax({
-			url: 'search/jiyeok',
-			method: 'GET',
-			dataType: 'json',
-			data: param,
-			success: function(data, textStatus, jqXHR) {
-				console.log(data)
-				
-				if(!data.success) {
-					jqXHR.errCode = data.errCode;
-				}
-				else {
-					hotplace.database.setJiyeokDatabase(param.code, data.datas);
-					hotplace.util.makeJiyeokSelect($target, data.datas);
-					
-					if(fn) fn();
-				}
-			}
-		});
-	}
-	
 	//함수리턴 
 	function _initToojaDom() {
-		var $itemJiyeogTab01 = $('#itemJiyeogTab01');
+		var itemJiyeogTab01 = '#itemJiyeogTab01';
+		var $itemJiyeogTab01 = $(itemJiyeogTab01);
 		
 		hotplace.dom.listExpandCollapse(_toojaRegionSearchMenu);
 		hotplace.dom.initSlider(_toojaRegionSearchMenu, false, [{
@@ -925,107 +1055,32 @@
 		.off('click')
 		.on('click', function() {
 			_initCheckbox(_activeToojaTab);
+			_getJiyeokData($(itemJiyeogTab01), 'X')
 		});
 		
 		//시도
-		$('#itemJiyeogTab01 select.SIDO')
+		$(itemJiyeogTab01 + ' select.SIDO')
 		.off('change')
 		.on('change', function() {
 			console.log($(this).val());
-			var $this = $(this);
-			var sidoCode = $this.val();
-			var itemNum = $this.data('item');
-			var $gugoon = null;
-			var $dong = null;
-			
-			var gugoonSel = '';
-			var dongSel = '';
-			
-			switch(itemNum) {
-			case 1 :
-				gugoonSel = '#selJiyeok1_2';
-				dongSel = '#selJiyeok1_3';
-				break;
-			case 2 :
-				gugoonSel = '#selJiyeok2_2';
-				dongSel = '#selJiyeok2_3';
-				break;
-			case 3 :
-				gugoonSel = '#selJiyeok3_2';
-				dongSel = '#selJiyeok3_3';
-				break;
-			}
-			
-			if(gugoonSel) {
-				$gugoon = $(gugoonSel);
-				$gugoon.html('');
-			}
-			
-			if(dongSel) {
-				$dongSel = $(dongSel);
-				$dongSel.html('');
-			}
-			
-			var data = hotplace.database.getJiyeokDatabase(sidoCode);
-			
-			if(data) {
-				hotplace.util.makeJiyeokSelect($gugoon, data);
-			}
-			else {
-				_getJiyeokInfo({code: sidoCode}, $gugoon);
-			}
+			_makeJiyeokSelect($(this), 'X', 'SIDO');
 		});
 		
 		
 		//시군구
-		$('#itemJiyeogTab01 select.GUGOON')
+		$(itemJiyeogTab01 + ' select.GUGOON')
 		.off('change')
 		.on('change', function(e) {
-			var $this = $(this);
-			var gugoonCode = $this.val();
-			var itemNum = $this.data('item');
-			var $dong = null;
-			
-			var dongSel = '';
-			
-			switch(itemNum) {
-			case 1 :
-				dongSel = '#selJiyeok1_3';
-				break;
-			case 2 :
-				dongSel = '#selJiyeok2_3';
-				break;
-			case 3 :
-				dongSel = '#selJiyeok3_3';
-				break;
-			}
-			
-			if(dongSel) {
-				$dong = $(dongSel);
-				$dong.html('');
-			}
-			
-			//전체
-			if(gugoonCode != '') {
-				var data = hotplace.database.getJiyeokDatabase(gugoonCode);
-				
-				if(data) {
-					hotplace.util.makeJiyeokSelect($dong, data);
-				}
-				else {
-					_getJiyeokInfo({code: gugoonCode}, $dong);
-				}
-			}
-		
+			_makeJiyeokSelect($(this), 'X', 'GUGOON');
 		});
 		
 		//추가버튼
-		$('#itemJiyeogTab01 button.jiAdd')
+		$(itemJiyeogTab01 + ' button.jiAdd')
 		.off('click')
 		.off('mouseover')
 		.on('click',  function() {
 			//최대3개
-			if(_getJiyeokDivCount() >= 3) {
+			if(_getJiyeokDivCount(_itemJiyeogTab01Td) >= 3) {
 				$(this).tooltip('enable');
 				$(this).tooltip('show');
 			}
@@ -1038,7 +1093,7 @@
 			}
 		})
 		.on('mouseover', function() {
-			if(_getJiyeokDivCount() >= 3) {
+			if(_getJiyeokDivCount(_itemJiyeogTab01Td) >= 3) {
 				$(this).tooltip('enable');
 			}
 			else {
@@ -1047,17 +1102,17 @@
 		});
 		
 		//삭제버튼
-		$('#itemJiyeogTab01 button.jiSub')
+		$(itemJiyeogTab01 + ' button.jiSub')
 		.off('click')
 		.off('mouseover')
 		.on('click',  function() {
 			//최대3개
-			if(_getJiyeokDivCount() > 1) {
+			if(_getJiyeokDivCount(_itemJiyeogTab01Td) > 1) {
 				$(this).closest('div').hide();
 			}
 		})
 		.on('mouseover', function(e) {
-			if(_getJiyeokDivCount() > 1) {
+			if(_getJiyeokDivCount(_itemJiyeogTab01Td) > 1) {
 				$(this).tooltip('disable');
 			}
 			else {
@@ -1067,17 +1122,20 @@
 		});
 		
 		//초기 서울시 구 셋팅
+		_initJiyeokInfo('X', itemJiyeogTab01);
+		
+		/*
 		_getJiyeokInfo({code: '11'}, $('#selJiyeok1_2'), function() {
 			hotplace.util.makeJiyeokSelect($('#selJiyeok2_2'), hotplace.database.getJiyeokDatabase('11'));
 			hotplace.util.makeJiyeokSelect($('#selJiyeok3_2'), hotplace.database.getJiyeokDatabase('11'));
 		});
 		
-		hotplace.dom.initTooltip('#itemJiyeogTab01', {
+		hotplace.dom.initTooltip(itemJiyeogTab01, {
 			config: {
 				trigger: 'hover',
 				placement: 'left'
 			}
-		});
+		});*/
 		
 		
 		return function() {
@@ -1220,6 +1278,7 @@
 		_dvGyeongGongLuris = '#dvGyeongGongLuris',
 		_spGyeongGongLurisTitle = '#spGyeongGongLurisTitle',
 		_dvGyeonggongResult = '#dvGyeonggongResult',
+		_itemGyeonggongJiyeogTd = '#itemGyeonggongJiyeog td',
 		_dvGyeonggongSearch = '#dvGyeonggongSearch';
 	
 	function _closeGyeongGongLurisDv() {
@@ -1259,6 +1318,9 @@
 	}
 	
 	function _initGyeonggongDom() {
+		var itemGyeonggongJiyeog = '#itemGyeonggongJiyeog';
+		var $itemGyeonggongJiyeog = $(itemGyeonggongJiyeog);
+		
 		hotplace.dom.listExpandCollapse(_gyeonggongSearchMenu);
 		hotplace.dom.initSlider(_gyeonggongSearchMenu, false, [{
 			targetId:_gyeonggongHpGrade
@@ -1293,6 +1355,71 @@
 		.on('click', function() {
 			_initCheckbox(_dvGyeonggongSearch);
 		});
+		
+		//시도
+		$(_itemGyeonggongJiyeogTd + ' select.SIDO')
+		.off('change')
+		.on('change', function() {
+			console.log($(this).val());
+			_makeJiyeokSelect($(this), 'G', 'SIDO');
+		});
+		
+		//시군구
+		$(_itemGyeonggongJiyeogTd + ' select.GUGOON')
+		.off('change')
+		.on('change', function(e) {
+			_makeJiyeokSelect($(this), 'G', 'GUGOON');
+		});
+		
+		//추가버튼
+		$(itemGyeonggongJiyeog + ' button.jiAdd')
+		.off('click')
+		.off('mouseover')
+		.on('click',  function() {
+			//최대3개
+			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) >= 3) {
+				$(this).tooltip('enable');
+				$(this).tooltip('show');
+			}
+			else {
+				var curDiv = $(this).closest('div');
+				var firstHiddenEl = $itemGyeonggongJiyeog.find('div:hidden:first');
+				console.log(firstHiddenEl.get(0));
+				curDiv.after(firstHiddenEl);
+				firstHiddenEl.show();
+			}
+		})
+		.on('mouseover', function() {
+			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) >= 3) {
+				$(this).tooltip('enable');
+			}
+			else {
+				$(this).tooltip('disable');
+			}
+		});
+		
+		//삭제버튼
+		$(itemGyeonggongJiyeog + ' button.jiSub')
+		.off('click')
+		.off('mouseover')
+		.on('click',  function() {
+			//최대3개
+			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) > 1) {
+				$(this).closest('div').hide();
+			}
+		})
+		.on('mouseover', function(e) {
+			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) > 1) {
+				$(this).tooltip('disable');
+			}
+			else {
+				$(this).tooltip('enable');
+			}
+			
+		});
+		
+		//초기 서울시 구 셋팅
+		_initJiyeokInfo('G', itemGyeonggongJiyeog);
 	}
 	
 	function _getReverseMinMax(obj) {
@@ -1319,7 +1446,7 @@
 				hotplace.dom.timerStart(90, $('#dvLoadingTimer2'));
 			},
 			data: JSON.stringify({
-				'jiyeog':_getCheckboxesData('itemGyeonggongJiyeog'),
+				'jiyeog': ['11'], //_getJiyeokData($('#itemJiyeogTab01'), 'G'), //_getCheckboxesData('itemGyeonggongJiyeog'),
 				'mulgeonKind':_getCheckboxesData('itemGyeonggongMulgeonKind'),
 				'jimok':_getCheckboxesData('itemGyeonggongJimok'),
 				'jiboon':_getCheckboxesData('itemGyeonggongJiboon'),

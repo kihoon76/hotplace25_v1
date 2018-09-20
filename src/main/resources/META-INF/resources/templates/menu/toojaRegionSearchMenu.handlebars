@@ -86,7 +86,7 @@
                                 <tr id="itemJiyeogTab01">
                                     <th>지역</th>
                                     <td>
-       									<div class="jiSel mgT5" id="dvJiyeokSel1">
+       									<div class="jiSel mgT5" id="dvJiyeokSel1" data-item="1" data-init="false">
                                             <select class="inp SIDO" style="width:120px;" id="selJiyeok1_1" data-item="1">
                                             	{{#each codes.jiyeok as |jiyeok|}}
                                             	<option value="{{jiyeok.value}}" {{#if_eq jiyeok.value  '11'}} selected {{/if_eq}}>{{jiyeok.name}}</option>
@@ -101,7 +101,7 @@
                                                 <button type="button" class="jiAdd TOOLTIP" title="최대 3개까지 추가가능합니다.">추가</button>
                                             </span>
                                         </div>
-                                        <div class="jiSel mgT5" id="dvJiyeokSel2" style="display:none;">
+                                        <div class="jiSel mgT5" id="dvJiyeokSel2" data-item="2" style="display:none;">
                                             <select class="inp SIDO" style="width:120px;" id="selJiyeok2_1" data-item="2">
                                             	{{#each codes.jiyeok as |jiyeok|}}
                                             	<option value="{{jiyeok.value}}" {{#if_eq jiyeok.value  '11'}} selected {{/if_eq}}>{{jiyeok.name}}</option>
@@ -116,7 +116,7 @@
                                                 <button type="button" class="jiAdd TOOLTIP" title="최대 3개까지 추가가능합니다.">추가</button>
                                             </span>
                                         </div>
-                                        <div class="jiSel mgT5" id="dvJiyeokSel3" style="display:none;">
+                                        <div class="jiSel mgT5" id="dvJiyeokSel3" data-item="3" style="display:none;">
                                             <select class="inp SIDO" style="width:120px;" id="selJiyeok3_1" data-item="3">
                                             	{{#each codes.jiyeok as |jiyeok|}}
                                             	<option value="{{jiyeok.value}}" {{#if_eq jiyeok.value  '11'}} selected {{/if_eq}}>{{jiyeok.name}}</option>
