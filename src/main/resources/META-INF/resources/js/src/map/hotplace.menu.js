@@ -1055,7 +1055,7 @@
 		.off('click')
 		.on('click', function() {
 			_initCheckbox(_activeToojaTab);
-			_getJiyeokData($(itemJiyeogTab01), 'X')
+			//_getJiyeokData($(itemJiyeogTab01), 'X')
 		});
 		
 		//시도
@@ -1354,6 +1354,7 @@
 		.off('click')
 		.on('click', function() {
 			_initCheckbox(_dvGyeonggongSearch);
+			//_getJiyeokData($itemGyeonggongJiyeog, 'G')
 		});
 		
 		//시도
@@ -1446,7 +1447,7 @@
 				hotplace.dom.timerStart(90, $('#dvLoadingTimer2'));
 			},
 			data: JSON.stringify({
-				'jiyeog': ['11'], //_getJiyeokData($('#itemJiyeogTab01'), 'G'), //_getCheckboxesData('itemGyeonggongJiyeog'),
+				'jiyeog': ['11'], //_getJiyeokData($('#itemGyeonggongJiyeog'), 'G'), //_getCheckboxesData('itemGyeonggongJiyeog'),
 				'mulgeonKind':_getCheckboxesData('itemGyeonggongMulgeonKind'),
 				'jimok':_getCheckboxesData('itemGyeonggongJimok'),
 				'jiboon':_getCheckboxesData('itemGyeonggongJiboon'),

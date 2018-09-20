@@ -27,13 +27,6 @@
 							<tr id="itemGyeonggongJiyeog">
 								<th>지역</th>
 								<td>
-									{{#each codes.jiyeok as |jiyeok|}}
-                                    <span class="rdchBox">
-                                    	<input type="checkbox" id="chkGyeonggongJiyeog{{@index}}" value="{{jiyeok.value}}">
-                                        <label for="chkGyeonggongJiyeog{{@index}}" class="labelCh"><em class="text">{{jiyeok.name}}</em></label>
-                                    </span>
-                                    {{/each}}
-                                    
                                     <div class="jiSel mgT5" id="dvGgJiyeokSel1" data-item="1" data-init="false">
                                     	<select class="inp SIDO" style="width:120px;" id="selGgJiyeok1_1" data-item="1">
                                         	{{#each codes.jiyeok as |jiyeok|}}
