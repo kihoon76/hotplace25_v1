@@ -248,14 +248,20 @@
 				hotplace.util.makeJiyeokSelect($(selPrefix + '3_2'), hotplace.database.getJiyeokDatabase('11'));
 			});
 			
+			hotplace.dom.initTooltip(tooltipContainerId, {
+				config: {
+					trigger: 'manual',
+					placement: 'left'
+				}
+			});
 		}
 		
-		hotplace.dom.initTooltip(tooltipContainerId, {
-			config: {
-				trigger: 'hover',
-				placement: 'left'
-			}
-		});
+//		hotplace.dom.initTooltip(tooltipContainerId, {
+//			config: {
+//				trigger: 'hover',
+//				placement: 'left'
+//			}
+//		});
 	}
 	
 	function _makeJiyeokSelect($target, type, cate) {
@@ -1078,10 +1084,10 @@
 		$(itemJiyeogTab01 + ' button.jiAdd')
 		.off('click')
 		.off('mouseover')
+		.off('mouseout')
 		.on('click',  function() {
 			//최대3개
 			if(_getJiyeokDivCount(_itemJiyeogTab01Td) >= 3) {
-				$(this).tooltip('enable');
 				$(this).tooltip('show');
 			}
 			else {
@@ -1094,17 +1100,18 @@
 		})
 		.on('mouseover', function() {
 			if(_getJiyeokDivCount(_itemJiyeogTab01Td) >= 3) {
-				$(this).tooltip('enable');
+				$(this).tooltip('show');
 			}
-			else {
-				$(this).tooltip('disable');
-			}
+		})
+		.on('mouseout', function() {
+			$(this).tooltip('hide');
 		});
 		
 		//삭제버튼
 		$(itemJiyeogTab01 + ' button.jiSub')
 		.off('click')
 		.off('mouseover')
+		.off('mouseout')
 		.on('click',  function() {
 			//최대3개
 			if(_getJiyeokDivCount(_itemJiyeogTab01Td) > 1) {
@@ -1112,13 +1119,12 @@
 			}
 		})
 		.on('mouseover', function(e) {
-			if(_getJiyeokDivCount(_itemJiyeogTab01Td) > 1) {
-				$(this).tooltip('disable');
+			if(_getJiyeokDivCount(_itemJiyeogTab01Td) == 1) {
+				$(this).tooltip('show');
 			}
-			else {
-				$(this).tooltip('enable');
-			}
-			
+		}).
+		on('mouseout', function() {
+			$(this).tooltip('hide');
 		});
 		
 		//초기 서울시 구 셋팅
@@ -1376,10 +1382,10 @@
 		$(itemGyeonggongJiyeog + ' button.jiAdd')
 		.off('click')
 		.off('mouseover')
+		.off('mouseout')
 		.on('click',  function() {
 			//최대3개
 			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) >= 3) {
-				$(this).tooltip('enable');
 				$(this).tooltip('show');
 			}
 			else {
@@ -1392,17 +1398,18 @@
 		})
 		.on('mouseover', function() {
 			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) >= 3) {
-				$(this).tooltip('enable');
+				$(this).tooltip('show');
 			}
-			else {
-				$(this).tooltip('disable');
-			}
+		})
+		.on('mouseout', function() {
+			$(this).tooltip('hide');
 		});
 		
 		//삭제버튼
 		$(itemGyeonggongJiyeog + ' button.jiSub')
 		.off('click')
 		.off('mouseover')
+		.off('mouseout')
 		.on('click',  function() {
 			//최대3개
 			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) > 1) {
@@ -1410,13 +1417,12 @@
 			}
 		})
 		.on('mouseover', function(e) {
-			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) > 1) {
-				$(this).tooltip('disable');
+			if(_getJiyeokDivCount(_itemGyeonggongJiyeogTd) == 1) {
+				$(this).tooltip('show');
 			}
-			else {
-				$(this).tooltip('enable');
-			}
-			
+		})
+		.on('mouseout', function() {
+			$(this).tooltip('hide');
 		});
 		
 		//초기 서울시 구 셋팅
