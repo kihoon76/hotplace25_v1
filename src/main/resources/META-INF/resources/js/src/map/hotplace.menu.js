@@ -488,7 +488,7 @@
 				'yongdoJigu':_getCheckboxesData('itemYongdoJiguTab01'),
 				'yongdoGuyeog':_getCheckboxesData('itemYongdoGuyeogTab01'),
 				'etcLawLimit':_getCheckboxesData('itemEtcLawLimitTab01'),
-				'etcChamgo':_getCheckboxesData('itemEtcChamgoTab01'),
+				'etcChamgo':null,//_getCheckboxesData('itemEtcChamgoTab01'),
 				'hpGrade':null, //hotplace.dom.getSliderValues(_toojaRegionSearchMenu, _jangmiHpGrade.substring(1)),
 				'gyeongsado': null, //_getCheckboxesData('itemGyeongsadoTab01'),
 				'jyeobdoState': null, //_getCheckboxesData('itemJyeobdoTab01'),
