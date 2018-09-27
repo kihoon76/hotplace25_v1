@@ -116,8 +116,8 @@
 		var trs = [];
 		if(cnt > 0) {
 			for(var i=0; i<cnt; i++) {
-				trs.push('<tr><td>' + list[i].num + '</td><td class="left ellipsis"><a href="#" class="contView" data-index="' + list[i].num + '">' + list[i].title + '</a></td></tr>');
-				trs.push('<tr class="contentViewBox"><td colspan="2"><div id="dvContentBox' + list[i].num + '" class="contentBox"></div></td></tr>');
+				trs.push('<tr><td>' + list[i].num + '</td><td class="left ellipsis" style="border-right: 0px;"><a href="#" class="contView" data-index="' + list[i].num + '">' + list[i].title + '</a></td><td class="right" style="border-left: 0px; font-size:.9em; color:#318de7; font-weight:bolder; ">' + list[i].writeDate + '</td></tr>');
+				trs.push('<tr class="contentViewBox"><td colspan="3"><div id="dvContentBox' + list[i].num + '" class="contentBox"></div></td></tr>');
 			}
 		}
 		else {
@@ -133,6 +133,7 @@
 			console.log(jo.datas);
 			var content = jo.datas.content;
 			$('#dvContentBox' + index).html(content);
+			$(window).trigger('resize');
 			
 		},null, true, false, null);
 	}

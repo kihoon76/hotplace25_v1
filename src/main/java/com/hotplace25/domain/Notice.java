@@ -8,6 +8,7 @@ public class Notice {
 	private String num;					//글번호
 	private String title;				//제목
 	private String content;				//내용
+	private String writeDate;			//작성일자
 	
 	public String getNum() {
 		return num;
@@ -26,5 +27,11 @@ public class Notice {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
 	}
 }

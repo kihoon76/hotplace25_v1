@@ -1239,7 +1239,8 @@ input.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; 
 table tr.contentViewBox {display:none;}
 table tr.contentViewBox td {padding:0; position:relative; border-bottom:0;}
 table tr.contentViewBox td:before {display:block; content:''; width:0px; height:0px; position:absolute; top:-5px; left:100px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:5px solid #aaa;}
-table tr.contentViewBox td .contentBox {border:1px solid #ccc; border-top:0; text-align:left; background:#f1f1f1; padding:20px 30px; overflow:auto; max-height:300px; position:relative; line-height:1.6em; color:#000;}
+/*table tr.contentViewBox td .contentBox {border:1px solid #ccc; border-top:0; text-align:left; background:#f1f1f1; padding:20px 30px; overflow:auto; max-height:300px; position:relative; line-height:1.6em; color:#000;}*/
+table tr.contentViewBox td .contentBox {border:1px solid #ccc; border-top:0; text-align:left; background:#f1f1f1; padding:20px 30px; overflow:auto; max-height:600px; position:relative; line-height:1.6em; color:#000;}
 table tr.contentViewBox td .contentBox img,
 table tr.contentViewBox td .contentBox input,
 table tr.contentViewBox td .contentBox select {max-width:100%;}

@@ -5,6 +5,7 @@
 	<resultMap id="RM_selectNoticeList" type="Notice">
 		<result column="글번호"	property="num" javaType="string"/>
 		<result column="제목"		property="title" javaType="string"/>
+		<result column="작성일"	property="writeDate" javaType="string"/>
 	</resultMap>
 	
 	<select id="selectNoticeList" resultMap="RM_selectNoticeList">
@@ -45,7 +46,7 @@
 	
 	
 	<select id="selectPage" parameterType="hashmap" resultMap="RM_selectNoticeList">
-		select 글번호, 제목
+		select 글번호, 제목,  CONVERT(CHAR(10), 작성일, 23) as 작성일
 		  from (
 		  	select row_number() over(order by 글번호 desc) rownum, *
 		  	  from [웹].[dbo].[공지사항]

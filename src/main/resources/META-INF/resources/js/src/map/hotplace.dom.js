@@ -644,7 +644,7 @@
 		if(ok) {
 			hotplace.notice.showPage();
 			
-			dom.openModal('', {width: 1000}, function() {
+			dom.openModal('', null/*{width: 1000}*/, function() {
 				hotplace.notice.clear();
 			});
 		}
