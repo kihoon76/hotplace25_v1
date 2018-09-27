@@ -121,7 +121,7 @@
 			}
 		}
 		else {
-			trs.push('<tr><td colspan="2">등록된 공지사항이 없습니다.</td></tr>');
+			trs.push('<tr><td colspan="3">등록된 공지사항이 없습니다.</td></tr>');
 		}
 		
 		$container.html(trs.join(''));
