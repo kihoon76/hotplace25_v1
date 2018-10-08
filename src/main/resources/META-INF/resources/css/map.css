@@ -640,6 +640,7 @@ body	 {min-height:600px;}
 .lnbArea .memuList li > a.menu04 > i {background-position:0 -150px;}
 .lnbArea .memuList li > a.menu05 > i {background-position:0 -180px;}
 .lnbArea .memuList li > a.menu06 > i {background-position:0 -210px;}
+.lnbArea .memuList li > a.menu07 > i {height:31px; background:url('../img/lnbmenu07.png') no-repeat center 0;}
 
 .lnbArea .memuList li.active > a {background-color:#2a7cdd;}
 .lnbArea .memuList li.active > a > i,
