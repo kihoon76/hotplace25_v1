@@ -1848,7 +1848,7 @@
 	        	url: 'search/addrToPnu',
 				method: 'POST',
 				contentType: 'application/json; charset=UTF-8',
-				data: JSON.stringify({address: address[0]}),
+				data: JSON.stringify({address: address[1]}),
 				dataType: 'text',
 				activeMask: true,
 				success: function(data, textStatus, jqXHR) {
@@ -1868,7 +1868,7 @@
 						}
 						
 						
-						hotplace.maps.panToLikeAddressSearch(lat, lng, null, {address:address[0], pnu:data, lng:lng, lat:lat}, null, null, hotplace.maps.getCurrentLevel());
+						hotplace.maps.panToLikeAddressSearch(lat, lng, null, {address:address[1], pnu:data, lng:lng, lat:lat}, null, null, hotplace.maps.getCurrentLevel());
 					}
 					else {
 						 /*_infoWinCoordAddr.setContent([
