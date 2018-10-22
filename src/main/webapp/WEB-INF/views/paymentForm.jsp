@@ -236,6 +236,7 @@
 			<input id="mKey" type="hidden" name="mKey" value="" >
 			<input type="hidden" name="gopaymethod" value="Card" >
 			<!-- 		<input type="hidden" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" > -->
+			<input id="acceptMethod" type="hidden" name="acceptmethod" value="" >
 			<input type="hidden" name="languageView" value="ko" >
 			<input type="hidden" name="charset" value="UTF-8" >
 			<input type="hidden" name="payViewType" value="popup" >

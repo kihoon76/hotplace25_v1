@@ -175,7 +175,9 @@
 				console.log(data);
 				
 				var goodname = (param.serviceType == 'ALL') ? '전체서비스(월간)' : '개별서비스';
-				
+				/*
+				 * 허용카드
+				 * */
 				if(data.success) {
 					data = data.datas[0];
 					$('#mid').val(data.mid);
@@ -187,6 +189,7 @@
 					$('#buyeremail').val(data.buyeremail);
 					$('#timestamp').val(data.timestamp);
 					$('#signature').val(data.signature);
+					$('#acceptMethod').val('no_receipt:ini_onlycardcode(01:03:04:06:11:12:14:16:41):below1000');
 					$('#returnUrl').val(hotplace.getContextUrl() + 'payment/afterPay');
 					$('#popupUrl').val(hotplace.getContextUrl() + 'payment/popup');
 					$('#mKey').val(data.mKey);

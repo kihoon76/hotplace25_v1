@@ -1843,6 +1843,8 @@
 
 	        if(address.length == 0) return;
 	        
+	        console.log(address)
+	        
 	        //검색된 주소로 PNU가져오기
 	        hotplace.ajax({
 	        	url: 'search/addrToPnu',
