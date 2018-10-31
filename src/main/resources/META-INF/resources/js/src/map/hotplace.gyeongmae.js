@@ -178,6 +178,21 @@
 		});
 	}
 	
+	function _makeGyeongmaeBosangPyeonib(bosangPyeonib) {
+		var $gBosangPyeonib = $('#gDBosangPyeonib');
+		
+		var html = [];
+		html.push('<tr>');
+		html.push('<td>' + bosangPyeonib.mulgeonsojaeji + '</td>');
+		html.push('<td>' + bosangPyeonib.gonggogigwan + '</td>');
+		html.push('<td>' + bosangPyeonib.gonggoil + '</td>');
+		html.push('<td>' + bosangPyeonib.saeobname + '</td>');
+		html.push('<td>' + bosangPyeonib.gonggobeonho + '</td>');
+		html.push('<td>' + bosangPyeonib.siseolkind + '</td>');
+		html.push('<td>' + bosangPyeonib.saeobsihaengja + '</td>');
+		html.push('</tr>');
+		$gBosangPyeonib.html(html.join(''));
+	}
 	function _makeGyeongmaeImages(images) {
 		var $gDimages = $(_gDimages);
 		var cnt = images.length;
@@ -253,13 +268,16 @@
 		$(btnGyeongmaeDetail)
 		.off('click')
 		.on('click', function() {
+			var $this = $(this);
+			var bosangPyeonib = $this.data('bosangPyeonib');
 			var param = {
-				goyubeonho: $(this).data('goyubeonho'),
-				pnu: $(this).data('pnu'),
-				deunglogbeonho: $(this).data('deunglogbeonho')
+				goyubeonho: $this.data('goyubeonho'),
+				pnu: $this.data('pnu'),
+				deunglogbeonho: $this.data('deunglogbeonho'),
+				bosangPyeonib: bosangPyeonib
 			}
 			
-			var hasForm = hotplace.dom.showGyeongmaeDetail(null, {path: hotplace.getContextUrl() + 'resources/'});
+			var hasForm = hotplace.dom.showGyeongmaeDetail(null, {path: hotplace.getContextUrl() + 'resources/', bosangPyeonib: bosangPyeonib});
 			
 			if(hasForm) {
 				hotplace.ajax({
@@ -287,6 +305,10 @@
 							$('#gDcheonggu').text((data.cheonggu) ? data.cheonggu.money() + ' 원': '');
 							$('#gDmaegaggiil').text(data.maegaggiil);
 							$('#gDbigo').text(data.bigo);
+							
+							if(bosangPyeonib != 'N,N' && data.bosangPyeonib) {
+								_makeGyeongmaeBosangPyeonib(data.bosangPyeonib);
+							}
 							
 							_makeGyeongmaeImages(data.images);
 							_makeGyeongmaeGiils(data.giils);
@@ -340,9 +362,13 @@
 	 * @param {object} map 맵
 	 * @param {object} marker 마커
 	 * @param {object} win InfoWindow
+	 * @param {string} bosangPyeonib 경공매 검색에서 호출한 경우 보상편입값 (Y,N)|(N,Y)|(N,N)
 	 */
-	gyeongmae.markerClick = function(map, marker, win) {
+	gyeongmae.markerClick = function(map, marker, win, bosangPyeonib) {
 		var data = marker._data;
+		
+		if(!bosangPyeonib) bosangPyeonib = 'N,N';
+		
 		console.log(data);
 		var tForm = hotplace.dom.getTemplate('gyeongmaeForm');
 		
@@ -373,6 +399,7 @@
 				$(_btnGyeongmaeDetail)
 				.data('goyubeonho', d.goyubeonho)
 				.data('pnu', d.pnu)
+				.data('bosangPyeonib', bosangPyeonib)
 				.data('deunglogbeonho', d.deunglogbeonho);
 				
 				$(_btnGyeongmaeThumbClose)

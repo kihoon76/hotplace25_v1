@@ -305,8 +305,13 @@
 		<result column="비고" property="bigo" javaType="string"/>
 		<result column="사건접수일" property="sageonjeobsuil" javaType="string"/>
 		<result column="배당요구종기일" property="baedangyogu" javaType="string"/>
+		<result column="보상편입" property="bpSearchParam" javaType="string" />
 		<result column="imgThumb" property="imgThumb" javaType="string" />
 		<result column="imgThumbExt" property="imgThumbExt" javaType="string" />
+		<association property="bosangPyeonib" column="{pnu=PNU, bp=보상편입}"
+					 javaType="BosangPyeonib"
+					 select="selectBosangPyeonib"
+					 />
 		<collection property="images" column="고유번호" 
 					javaType="java.util.ArrayList"
 					ofType="GyeongmaeImage" 
@@ -317,7 +322,6 @@
 					ofType="GyongmaeGiilHistory"
 					select="selectGyeongmaeGiilHistory"
 					/>
-					
 		<collection property="lists" column="고유번호"
 					javaType="java.util.ArrayList"
 					ofType="GyeongmaeListHistory"
@@ -342,6 +346,16 @@
 					/>
 	</resultMap>
 	
+	<resultMap type="BosangPyeonib" id="RM_BosangPyeonib">
+		<result column="물건소재지" property="mulgeonsojaeji" javaType="string"/>
+		<result column="공고기관"  property="gonggogigwan" javaType="string"/>
+		<result column="공고일"  property="gonggoil" javaType="string"/>
+		<result column="사업명"  property="saeobname" javaType="string"/>
+		<result column="공고번호"  property="gonggobeonho" javaType="string"/>
+		<result column="시설종류"  property="siseolkind" javaType="string"/>
+		<result column="사업시행자"  property="saeobsihaengja" javaType="string"/>
+	</resultMap>
+	
 	<select id="selectGyeongmaeThumb" parameterType="string" resultMap="RM_selectGyeongmaeThumb">
 		select  top 1 a.고유번호, a.사건번호, a.등록번호, a.PNU, a.소재지, a.용도, a.감정평가액, a.유찰회수, CONVERT(char(19), a.매각기일, 120) as 매각기일, CONVERT(varchar(max), c.이미지 ,2) as imgThumb, isnull(c.확장자, 'zzz')  as imgThumbExt
   		  from [경매].[dbo].[경매_목록] a
@@ -356,9 +370,18 @@
 	<select id="selectGyeongmaeDetail" parameterType="map" resultMap="RM_selectGyeongmae">
 		select a.고유번호, a.등록번호, a.PNU, a.사건번호, concat(a.법원명, ' | ', a.담당계) as 담당, a.소재지, a.용도, a.감정평가액, a.유찰회수,
 			   CONVERT(char(19), a.매각기일, 120) as 매각기일, CONVERT(char(10), a.사건접수일, 23) as 사건접수일, CONVERT(char(10), a.배당요구종기일, 23) as 배당요구종기일,
-			   a.입찰방법, a.최저매각가격, a.청구금액, a.비고
+			   a.입찰방법, a.최저매각가격, a.청구금액, a.비고, #{bosangPyeonib} as 보상편입
   		  from [경매].[dbo].[경매_목록] a
  		 where a.고유번호 = #{goyubeonho}
+	</select>
+	
+	<select id="selectBosangPyeonib" statementType="CALLABLE" parameterType="map" resultMap="RM_BosangPyeonib">
+		<if test="bp != 'N,N'">
+		{ call [경매].[dbo].[SEL_보상편입정보](
+       		#{pnu, mode=IN, jdbcType=NVARCHAR, javaType=string},
+			#{bp,  mode=IN, jdbcType=NVARCHAR, javaType=string}
+       	)}
+		</if>
 	</select>
 	
 	<!-- 경매이미지 -->
@@ -455,10 +478,15 @@
 	</resultMap>
 	
 	<resultMap id="RM_selectGongmaeDetail" type="GongmaeDetail" extends="RM_selectGongmaeThumb">
+		<result column="PNU" property="pnu" javaType="string"/>
+		<result column="보상편입" property="bpSearchParam" javaType="string"/>
 		<result column="위치및부근현황" property="wichiBugeun" javaType="string"/>
 		<result column="이용현황" property="use" javaType="string"/>
 		<result column="기타사항" property="etc" javaType="string"/>
-		
+		<association property="bosangPyeonib" column="{pnu=PNU, bp=보상편입}"
+					 javaType="BosangPyeonib"
+					 select="selectBosangPyeonib"
+					 />
 		<collection property="areaList" column="공매_목록_고유번호" 
 					javaType="java.util.ArrayList"
 					ofType="GongmaeArea" 
@@ -497,8 +525,8 @@
 		 where [공매_목록_고유번호] = #{goyubeonho}
 	</select>
 	
-	<select id="selectGongmaeDetail" parameterType="string" resultMap="RM_selectGongmaeDetail" >
-		select a.공매_목록_고유번호, 상단주소, 위치및부근현황, 이용현황, 기타사항, <include refid="gongmaeColumns" />
+	<select id="selectGongmaeDetail" parameterType="map" resultMap="RM_selectGongmaeDetail" >
+		select a.공매_목록_고유번호, 상단주소, 위치및부근현황, 이용현황, 기타사항, #{bosangPyeonib} 보상편입, <include refid="gongmaeColumns" />
 		  from [수작업입력].[dbo].[공매_기본정보] a
 		  left outer join [수작업입력].[dbo].[공매_위치_이용현황] b
 		    on a.[공매_목록_고유번호] = b.[공매_목록_고유번호]
@@ -550,15 +578,6 @@
 		 		 where [공매_목록_고유번호] = #{goyubeonho}
 		 	)
 	</select>
-	<!-- 보상편입물건 -->
-	<!-- <select id="selectBosangPyeonibMarker" resultType="string" parameterType="hashmap">
-       	select concat(PNU, '|$', 고유번호, '|$', 경도, '|$', 위도) 
-          from [수작업].[dbo].[보상물건]
-         where 편입보상구분 = #{gubun}
-           and 위도 between convert(float, #{swy}) and convert(float, #{ney})
-   		   and 경도 between convert(float, #{swx}) and convert(float, #{nex})
-   		 order by 경도 asc
-	</select> -->
 	
 	<select id="selectBosangPyeonibMarker" statementType="CALLABLE" parameterType="hashmap" resultType="string">
 		<if test='stopGrouping == "N"'>

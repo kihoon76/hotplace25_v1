@@ -25,6 +25,8 @@ public class Gyeongmae {
 	private String sageonjeobsuil;								//사건접수일
 	private String imgThumb;									//대표이미지
 	private String imgThumbExt;									//대표이미지 확장자
+	private String bpSearchParam;								//보상편입 검색 조건
+	private BosangPyeonib bosangPyeonib;						//보상편입
 	private List<GyeongmaeImage> images;						//이미지들
 	private List<GyongmaeGiilHistory> giils; 					//기일내역
 	private List<GyeongmaeListHistory> lists;					//목록내역
@@ -177,4 +179,17 @@ public class Gyeongmae {
 	public void setJinhaengmulgeons(List<GyeongaeJinhaengmulgeon> jinhaengmulgeons) {
 		this.jinhaengmulgeons = jinhaengmulgeons;
 	}
+	public BosangPyeonib getBosangPyeonib() {
+		return bosangPyeonib;
+	}
+	public void setBosangPyeonib(BosangPyeonib bosangPyeonib) {
+		this.bosangPyeonib = bosangPyeonib;
+	}
+	public String getBpSearchParam() {
+		return bpSearchParam;
+	}
+	public void setBpSearchParam(String bpSearchParam) {
+		this.bpSearchParam = bpSearchParam;
+	}
+	
 }

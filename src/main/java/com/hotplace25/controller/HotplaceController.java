@@ -356,9 +356,10 @@ public class HotplaceController {
 	@ResponseBody
 	public Gyeongmae getGyeongmaeDetail(@RequestParam("goyubeonho") String goyubeonho,
 									    @RequestParam("deunglogbeonho") String deunglogbeonho,
-									    @RequestParam("pnu") String pnu) {
+									    @RequestParam("pnu") String pnu,
+									    @RequestParam("bosangPyeonib") String bosangPyeonib) {
 		
-		Gyeongmae g = hotplaceService.getGyeongmaeDetail(goyubeonho, deunglogbeonho);
+		Gyeongmae g = hotplaceService.getGyeongmaeDetail(goyubeonho, deunglogbeonho, bosangPyeonib, pnu);
 		
 		return g;
 	}
@@ -376,9 +377,10 @@ public class HotplaceController {
 	@GetMapping("gongmae/detail")
 	@ResponseBody
 	public GongmaeDetail getGongmaeDetail(@RequestParam("goyubeonho") String goyubeonho,
-									  	  @RequestParam("pnu") String pnu) {
+									  	  @RequestParam("pnu") String pnu,
+									  	  @RequestParam("bosangPyeonib") String bosangPyeonib) {
 		
-		GongmaeDetail gD = hotplaceService.getGongmaeDetail(goyubeonho);
+		GongmaeDetail gD = hotplaceService.getGongmaeDetail(goyubeonho, pnu, bosangPyeonib);
 		
 		return gD;
 	}

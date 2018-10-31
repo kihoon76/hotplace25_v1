@@ -324,11 +324,22 @@
 		var data = row.getData();
 		var gyeongGongGubun = gubun || data.gyeongGongmae;
 		var options = null;
-   
+		var bosangPyeonib = null;
+		
 		if(data.lng == 0) {
 			hotplace.processAjaxError(hotplace.error.MISS_LATLNG);
 		}
 		else {
+			if(data.bosangPyeonib == 'B') {
+				bosangPyeonib = 'Y,N';
+			}
+			else if(data.bosangPyeonib == 'P') {
+				bosangPyeonib = 'N,Y';
+			}
+			else {
+				bosangPyeonib = 'N,N';
+			}
+			
 			switch(gyeongGongGubun) {
 			case 'K':
 				options = {
@@ -336,7 +347,8 @@
 					mulgeonGubun: 'K',
 					unu: data.unuGyeongmae,
 					isAjaxContent: true,
-					isClickTrigger: true
+					isClickTrigger: true,
+					bosangPyeonib: bosangPyeonib
 				};
 				break;
 			case 'A':
@@ -350,7 +362,8 @@
 					mulgeonGubun: 'G',
 					unu: data.unuGongmae,
 					isAjaxContent: true,
-					isClickTrigger: true
+					isClickTrigger: true,
+					bosangPyeonib: bosangPyeonib
 				};
 				break;
 			case 'X' : //투자유망

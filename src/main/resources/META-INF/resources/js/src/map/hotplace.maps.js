@@ -2436,10 +2436,10 @@
 						if(options && options.mulgeonGubun) {
 							switch(options.mulgeonGubun) {
 							case 'K' :
-								hotplace.gyeongmae.markerClick(map, newMarker, newInfoWindow);
+								hotplace.gyeongmae.markerClick(map, newMarker, newInfoWindow, options.bosangPyeonib);
 								break;
 							case 'G' :
-								hotplace.gongmae.markerClick(map, newMarker, newInfoWindow);
+								hotplace.gongmae.markerClick(map, newMarker, newInfoWindow, options.bosangPyeonib);
 								break;
 							case 'B' :
 								hotplace.bosangpyeonib.markerClick(map, newMarker, newInfoWindow, options.kind);

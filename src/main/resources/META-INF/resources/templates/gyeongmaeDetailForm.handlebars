@@ -2,7 +2,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 			<h2 class="modal-title">
-				상세보기
+				상세보기 ({{bosangPyeonib}})
 			</h2>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
@@ -95,6 +95,40 @@
 				</div>
 			</div>
 
+			{{#xif " bosangPyeonib != 'N,N' " }}
+			<!-- ----------------------- -->
+			<!-- 보상편입 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">{{#xif " bosangPyeonib == 'Y,N' " }}보상정보{{else}}편입정보{{/xif}}</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:30%;">
+							<col style="width:10%;">
+							<col style="width:10%;">
+							<col style="width:15%;">
+							<col style="width:15%;">
+							<col style="width:10%;">
+							<col style="width:10%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>물건소재지</th>
+								<th>공고기관</th>
+								<th>공고일</th>
+								<th>사업명</th>
+								<th>공고번호</th>
+								<th>시설종류</th>
+								<th>사업시행자</th>
+							</tr>
+						</thead>
+						<tbody id="gDBosangPyeonib"></tbody>
+					</table>
+				</div>
+			</div>
+     		{{/xif}}
 			
 			<!-- ----------------------- -->
 			<!-- 기일내역 -->

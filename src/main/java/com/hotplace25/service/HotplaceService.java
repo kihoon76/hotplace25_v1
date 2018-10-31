@@ -68,10 +68,12 @@ public class HotplaceService {
 		return g;
 	}
 
-	public Gyeongmae getGyeongmaeDetail(String goyubeonho, String deunglogbeonho) {
+	public Gyeongmae getGyeongmaeDetail(String goyubeonho, String deunglogbeonho, String bosangPyeonib, String pnu) {
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("goyubeonho", goyubeonho);
 		param.put("deunglogbeonho", deunglogbeonho);
+		param.put("bosangPyeonib", bosangPyeonib);
+		param.put("pnu", pnu);
 		
 		Gyeongmae g = hotplaceDao.selectGyeongmaeDetail(param);
 		
@@ -150,8 +152,14 @@ public class HotplaceService {
 		return hotplaceDao.selectYaggwanList();
 	}
 
-	public GongmaeDetail getGongmaeDetail(String goyubeonho) {
-		GongmaeDetail g = hotplaceDao.selectGongmaeDetail(goyubeonho);
+	public GongmaeDetail getGongmaeDetail(String goyubeonho, String pnu, String bosangPyeonib) {
+		Map<String, String> param = new HashMap<String, String>();
+		
+		param.put("goyubeonho", goyubeonho);
+		param.put("pnu", pnu);
+		param.put("bosangPyeonib", bosangPyeonib);
+		
+		GongmaeDetail g = hotplaceDao.selectGongmaeDetail(param);
 		
 		if(g.getImages() != null && g.getImages().size() > 0) {
 			for(GongmaeImage gImg : g.getImages()) {

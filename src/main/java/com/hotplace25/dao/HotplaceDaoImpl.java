@@ -128,8 +128,8 @@ public class HotplaceDaoImpl implements HotplaceDao {
 	}
 
 	@Override
-	public GongmaeDetail selectGongmaeDetail(String goyubeonho) {
-		return msSqlSessionAgent2.selectOne(namespace + ".selectGongmaeDetail", goyubeonho);
+	public GongmaeDetail selectGongmaeDetail(Map<String, String> param) {
+		return msSqlSessionAgent2.selectOne(namespace + ".selectGongmaeDetail", param);
 	}
 
 	@Override

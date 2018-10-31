@@ -6,7 +6,9 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("GongmaeDetail")
 public class GongmaeDetail extends Gongmae {
-
+	
+	private String bpSearchParam;								//보상편입 검색 조건
+	private BosangPyeonib bosangPyeonib;						//보상편입
 	private List<GongmaeIbchal> ibchalList;
 	private List<GongmaeArea> areaList;
 	private List<GongmaeAroundNagchalMulgeon> mulgeonList;
@@ -14,6 +16,22 @@ public class GongmaeDetail extends Gongmae {
 	private List<GongmaeGamjeong> gamjeongList;
 	private List<GongmaeImage> images;
 	
+	
+	public String getBpSearchParam() {
+		return bpSearchParam;
+	}
+
+	public void setBpSearchParam(String bpSearchParam) {
+		this.bpSearchParam = bpSearchParam;
+	}
+
+	public BosangPyeonib getBosangPyeonib() {
+		return bosangPyeonib;
+	}
+
+	public void setBosangPyeonib(BosangPyeonib bosangPyeonib) {
+		this.bosangPyeonib = bosangPyeonib;
+	}
 
 	public List<GongmaeArea> getAreaList() {
 		return areaList;

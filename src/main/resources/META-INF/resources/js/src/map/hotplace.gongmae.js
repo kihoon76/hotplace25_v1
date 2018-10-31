@@ -42,10 +42,11 @@
 		.on('click', function() {
 			var param = {
 				goyubeonho: d.goyubeonho,
-				pnu: d.pnu
+				pnu: d.pnu,
+				bosangPyeonib: d.bosangPyeonib
 			}
 			
-			var hasForm = hotplace.dom.showGongmaeDetail();
+			var hasForm = hotplace.dom.showGongmaeDetail(null, {bosangPyeonib: d.bosangPyeonib});
 			
 			if(hasForm) {
 				hotplace.ajax({
@@ -68,6 +69,10 @@
 							$('#gongDibchalPeriodNumber').text(data.ibchalPeriodNumber);
 							$('#gongDyuchal').text(data.yuchal);
 							$('#gongDjibhaengGigwan').text(data.jibhaengGigwan);
+							
+							if(d.bosangPyeonib != 'N,N' && data.bosangPyeonib) {
+								_makeGongmaeBosangPyeonib(data.bosangPyeonib);
+							}
 							
 							if(data.minIbchalga != null) {
 								data.minIbchalga = data.minIbchalga.money();
@@ -286,6 +291,22 @@
 		container.html(contentArr.join(''));
 	}
 	
+	function _makeGongmaeBosangPyeonib(bosangPyeonib) {
+		var $gongDBosangPyeonib = $('#gongDBosangPyeonib');
+		
+		var html = [];
+		html.push('<tr>');
+		html.push('<td>' + bosangPyeonib.mulgeonsojaeji + '</td>');
+		html.push('<td>' + bosangPyeonib.gonggogigwan + '</td>');
+		html.push('<td>' + bosangPyeonib.gonggoil + '</td>');
+		html.push('<td>' + bosangPyeonib.saeobname + '</td>');
+		html.push('<td>' + bosangPyeonib.gonggobeonho + '</td>');
+		html.push('<td>' + bosangPyeonib.siseolkind + '</td>');
+		html.push('<td>' + bosangPyeonib.saeobsihaengja + '</td>');
+		html.push('</tr>');
+		$gongDBosangPyeonib.html(html.join(''));
+	}
+	
 	function _makeGongmaeImages(images) {
 		var $gDimages = $(_gDimages);
 		var cnt = images.length;
@@ -331,9 +352,11 @@
 	 * @param {object} map 맵
 	 * @param {object} marker 마커
 	 * @param {object} win InfoWindow
+	 * @param {string} bosangPyeonib 경공매 검색에서 호출한 경우 보상편입값 (Y,N)|(N,Y)|(N,N)
 	 */
-	gongmae.markerClick = function(map, marker, win) {
+	gongmae.markerClick = function(map, marker, win, bosangPyeonib) {
 		var data = marker._data;
+		if(!bosangPyeonib) bosangPyeonib = 'N,N';
 		console.log(data);
 		var tForm = hotplace.dom.getTemplate('gongmaeForm');
 		
@@ -357,7 +380,7 @@
 					win.close();
 				});
 				
-				
+				d.bosangPyeonib = bosangPyeonib;
 				_bindDetailClickHandler(d);
 				_bindGeoClickHandler(data.location[1], data.location[0]);
 			});

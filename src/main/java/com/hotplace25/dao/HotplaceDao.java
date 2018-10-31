@@ -53,7 +53,7 @@ public interface HotplaceDao {
 
 	public List<Yaggwan> selectYaggwanList();
 
-	public GongmaeDetail selectGongmaeDetail(String goyubeonho);
+	public GongmaeDetail selectGongmaeDetail(Map<String, String> param);
 
 	public String selectCurrentYear();
 	
