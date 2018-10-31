@@ -34,7 +34,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 		String url = request.getRequestURL().toString();
 		
 		//가입시 회원정보는 로그에 남기지 않는다.
-		if(!ip.startsWith("192.") && url.indexOf("/user/join") < 0) {
+		if(!ip.startsWith("192.") && !url.startsWith("https://hotplace.ddns.net") && url.indexOf("/user/join") < 0) {
 			LogVO log = new LogVO();
 			
 			log.setIp(ip);
