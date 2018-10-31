@@ -1453,7 +1453,7 @@
 				hotplace.dom.timerStart(90, $('#dvLoadingTimer2'));
 			},
 			data: JSON.stringify({
-				'jiyeog': ['11'], //_getJiyeokData($('#itemGyeonggongJiyeog'), 'G'), //_getCheckboxesData('itemGyeonggongJiyeog'),
+				'jiyeog': _getJiyeokData($('#itemGyeonggongJiyeog'), 'G'), //_getCheckboxesData('itemGyeonggongJiyeog'),
 				'mulgeonKind':_getCheckboxesData('itemGyeonggongMulgeonKind'),
 				'jimok':_getCheckboxesData('itemGyeonggongJimok'),
 				'jiboon':_getCheckboxesData('itemGyeonggongJiboon'),
