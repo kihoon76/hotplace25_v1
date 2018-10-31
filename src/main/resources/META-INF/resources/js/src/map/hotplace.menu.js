@@ -481,7 +481,7 @@
 				'cityPlan':_getCheckboxesData('itemCityPlanTab01'),
 				'cityPlanState':_convertToYN(_getCheckboxesData('itemCityPlanStateTab01')),
 				'bosangPyeonib': _convertToYN(_getCheckboxesData('itemBosangPyeonibTab01')),
-				'jiyeog': ['11'], //_getJiyeokData($('#itemJiyeogTab01'), 'X'), //_getCheckboxesData('itemJiyeogTab01'),
+				'jiyeog': _getJiyeokData($('#itemJiyeogTab01'), 'X'), //_getCheckboxesData('itemJiyeogTab01'),
 				'jimok':_getCheckboxesData('itemJimokTab01'),
 				'gongsi':_getCheckboxesData('itemGongsiTab01'),
 				'yongdoJiyeog':_getCheckboxesData('itemYongdoJiyeogTab01'),
