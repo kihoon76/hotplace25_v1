@@ -60,6 +60,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 			}
 			
 			if(param != null) {
+				param = param.replaceAll("%", "%25");
 				log.setParameter(URLDecoder.decode(param, "UTF-8"));
 			}
 			
