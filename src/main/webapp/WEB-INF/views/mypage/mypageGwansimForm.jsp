@@ -41,7 +41,7 @@
 										<option value="4" <c:if test="${gwansim.grade eq '4'}">selected</c:if>>C</option>
 										<option value="5" <c:if test="${gwansim.grade eq '5'}">selected</c:if>>D</option>
 										<option value="6" <c:if test="${gwansim.grade eq '6'}">selected</c:if>>F</option>
-										<option value="6" <c:if test="${gwansim.grade eq '7'}">selected</c:if>>검토</option>
+										<option value="7" <c:if test="${gwansim.grade eq '7'}">selected</c:if>>검토</option>
                                     </select>
                                 </td>
 							</tr>
