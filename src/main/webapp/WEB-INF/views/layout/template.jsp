@@ -193,19 +193,19 @@
 
 	<div id="footer" class="footer">
 		<span class="text">
-			핫플레이스25경영컨설팅(주)
+			(주)유피엠씨
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			사업자등록번호 : 486-87-01091 
+			사업자등록번호 : 377-87-00804 
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			대표자명 : 이효돈
+			대표자명 : 최헌욱
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			주소 : 서울특별시 송파구 법원로 9길 26, C동 613호 (문정동, 현대비즈니스파크)
+			주소 : 대전광역시 대덕구 벚꽃길 141
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			대표전화 : 070-7117-6868
+			대표전화 : 070-7808-6883
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<strong>본 정보를 이용한 투자의 책임은 투자자에게 있습니다.</strong> 
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			Copyright 핫플레이스25경영컨설팅(주)  All Rights Reserved.
+			Copyright (주)유피엠씨  All Rights Reserved.
 		</span>
 	</div>
 	

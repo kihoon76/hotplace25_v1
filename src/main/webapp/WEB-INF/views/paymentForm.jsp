@@ -102,7 +102,7 @@
 						<tbody>
 							<tr>
 								<th colspan="3" class="center">
-									입금계좌 (<span class="payment_info">542-910013-13904</span>) 입금은행(<span class="payment_info">하나은행</span>) 예금주(<span class="payment_info">핫플레이스25경영컨설팅 주식회사</span>)</span>
+									입금계좌 (<span class="payment_info">1005-903-598991</span>) 입금은행(<span class="payment_info">우리은행</span>) 예금주(<span class="payment_info">(주)유피엠씨</span>)</span>
 								</th>
 							</tr>
 							<tr>
