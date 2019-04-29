@@ -81,8 +81,8 @@
 		//TOJI_LIMIT_MIN_AREA:'TOJI_LIMIT_MIN_AREA', 					//토지이용규제완화(면적)
 		//DEV_BIZ_AREA_GEONSU:'DEV_BIZ_AREA_GEONSU', 					//개발사업면적(건수)
 		//DEV_BIZ_AREA_AREA:'DEV_BIZ_AREA_AREA', 						//개발사업면적(면적)
-		BOSANG_MULGEON_GEONSU:'BOSANG_MULGEON_GEONSU', 				//보상물건(건수)
-		BOSANG_MULGEON_AREA:'BOSANG_MULGEON_AREA', 					//보상물건(면적)
+		//BOSANG_MULGEON_GEONSU:'BOSANG_MULGEON_GEONSU', 				//보상물건(건수)
+		//BOSANG_MULGEON_AREA:'BOSANG_MULGEON_AREA', 					//보상물건(면적)
 		//ACCEPT_DEV_GEONSU:'ACCEPT_DEV_GEONSU', 						//개발행위허가(건수)
 		//ACCEPT_DEV_AREA:'ACCEPT_DEV_AREA', 							//개발행위허가(면적)
 		ACCEPT_BUILDING_GEONSU:'ACCEPT_BUILDING_GEONSU', 			//건축허가(건수)
@@ -108,8 +108,8 @@
 		//TOJI_LIMIT_MIN:0,
 		//DEV_BIZ_AREA_GEONSU:0,
 		//DEV_BIZ_AREA_AREA:0,
-		BOSANG_MULGEON_GEONSU:0,
-		BOSANG_MULGEON_AREA:0,
+		//BOSANG_MULGEON_GEONSU:0,
+		//BOSANG_MULGEON_AREA:0,
 		//ACCEPT_DEV_GEONSU:0,
 		//ACCEPT_DEV_AREA:0,
 		ACCEPT_BUILDING_GEONSU:0,
@@ -130,7 +130,7 @@
 	 * @property {string} PYEONIB - 공매
 	 * @property {string} SILGEOLAE - 실거래가
 	 */
-	var _markerGroupOnOff = { GYEONGMAE:0, GONGMAE:0, BOSANG:0, PYEONIB:0, SILGEOLAE:0, ACCEPT_BUILDING:0 };
+	var _markerGroupOnOff = { GYEONGMAE:0, GONGMAE:0, /*BOSANG:0, PYEONIB:0,*/ SILGEOLAE:0, ACCEPT_BUILDING:0 };
 	
 	/** 
 	 * @private 
@@ -301,12 +301,12 @@
 //		case _cellTypes.DEV_BIZ_AREA_AREA:
 //			name = '개발사업면적(면적기준)';
 //			break;
-		case _cellTypes.BOSANG_MULGEON_GEONSU:
-			name = '보상물건(건수기준)';
-			break;
-		case _cellTypes.BOSANG_MULGEON_AREA:
-			name = '보상물건(면적기준)';
-			break;
+//		case _cellTypes.BOSANG_MULGEON_GEONSU:
+//			name = '보상물건(건수기준)';
+//			break;
+//		case _cellTypes.BOSANG_MULGEON_AREA:
+//			name = '보상물건(면적기준)';
+//			break;
 //		case _cellTypes.ACCEPT_DEV_GEONSU:
 //			name = '개발행위허가(건수기준)';
 //			break;
@@ -382,8 +382,8 @@
 		RADIUS_SEARCH: 'RADIUS_SEARCH',
 		GYEONGMAE: 'GYEONGMAE', 
 		GONGMAE: 'GONGMAE',
-		BOSANG: 'BOSANG',
-		PYEONIB: 'PYEONIB',
+		//BOSANG: 'BOSANG',
+		//PYEONIB: 'PYEONIB',
 		SILGEOLAE: 'SILGEOLAE',
 		ACCEPT_BUILDING: 'ACCEPT_BUILDING',
 		ADDRESS_SEARCH: 'ADDRESS_SEARCH'
@@ -433,8 +433,8 @@
 		RADIUS_SEARCH : { m: [], c: [], url: '' },
 		GYEONGMAE : { m: [], url: 'gyeongmaemarker', icon:'gyeongmae.png'/*, trigger: 'mouseover'*/ , zIndex: 7000},
 		GONGMAE : { m: [], url: 'gongmaemarker', icon: 'gongmae.png'/*, trigger: 'mouseover'*/ , zIndex: 5000 },
-		BOSANG: { m: [], url: 'bosangmarker', icon: 'bosang.png', clusterIcon:'bosangC.png', level:10, clustering: true, stopLevel: 11, zIndex: 3000},
-		PYEONIB: { m: [], url: 'pyeonibmarker', icon: 'pyeonib.png', clusterIcon:'pyeonibC.png', level:10, clustering: true, stopLevel: 11, zIndex: 1000},
+		//BOSANG: { m: [], url: 'bosangmarker', icon: 'bosang.png', clusterIcon:'bosangC.png', level:10, clustering: true, stopLevel: 11, zIndex: 3000},
+		//PYEONIB: { m: [], url: 'pyeonibmarker', icon: 'pyeonib.png', clusterIcon:'pyeonibC.png', level:10, clustering: true, stopLevel: 11, zIndex: 1000},
 		SILGEOLAE: { m: [], url: 'silgeolaemarker', icon: 'silgeolae.png', level:13 },
 		ACCEPT_BUILDING: { m: [], url: 'acceptbuildingmarker', icon: 'acceptbuilding.png', level:13 },
 		ADDRESS_SEARCH: { m: [], icon: 'marker_search.png', zIndex: 10000 }
@@ -480,8 +480,8 @@
 		RADIUS_SEARCH : [],
 		GYEONGMAE : [],
 		GONGMAE : [],
-		BOSANG : [],
-		PYEONIB : [],
+		//BOSANG : [],
+		//PYEONIB : [],
 		SILGEOLAE : [],
 		ACCEPT_BUILDING : [],
 		ADDRESS_SEARCH: []
@@ -773,12 +773,12 @@
 		case _markerTypes.GONGMAE :
 			markerData = hotplace.database.getLevelData(level, _markerTypes.GONGMAE);
 			break;
-		case _markerTypes.BOSANG :
-			markerData = hotplace.database.getLevelData(level, _markerTypes.BOSANG);
-			break;
-		case _markerTypes.PYEONIB :
-			markerData = hotplace.database.getLevelData(level, _markerTypes.PYEONIB);
-			break;
+//		case _markerTypes.BOSANG :
+//			markerData = hotplace.database.getLevelData(level, _markerTypes.BOSANG);
+//			break;
+//		case _markerTypes.PYEONIB :
+//			markerData = hotplace.database.getLevelData(level, _markerTypes.PYEONIB);
+//			break;
 		case _markerTypes.SILGEOLAE :
 			markerData = hotplace.database.getLevelData(level, _markerTypes.SILGEOLAE);
 			break;
@@ -1455,12 +1455,12 @@
 		case 'GONGMAE' :
 			hotplace.gongmae.markerClick(map, marker, win);
 			break;
-		case 'BOSANG' :
-			hotplace.bosangpyeonib.markerClick(map, marker, win, '보상');
-			break;
-		case 'PYEONIB' :
-			hotplace.bosangpyeonib.markerClick(map, marker, win, '편입');
-			break;
+//		case 'BOSANG' :
+//			hotplace.bosangpyeonib.markerClick(map, marker, win, '보상');
+//			break;
+//		case 'PYEONIB' :
+//			hotplace.bosangpyeonib.markerClick(map, marker, win, '편입');
+//			break;
 		case 'SILGEOLAE' :
 			hotplace.silgeolae.markerClick(map, marker, win);
 			break;

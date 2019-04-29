@@ -81,7 +81,7 @@
 						<li><a href="#" class="link" id="modalSite">서비스소개</a></li>
 						<li><a href="#" class="link" id="modalTutorial">사용법</a></li>
 						<li><a href="#" class="link" id="myCurrentPosition">현재위치이동</a></li>
-						<li><a href="#" class="link" id="modalPayment">결제하기</a></li>
+<!-- 						<li><a href="#" class="link" id="modalPayment">결제하기</a></li> -->
 					</ul>
 				</div>
 			</span>
@@ -235,7 +235,7 @@
 <script type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
 <!-- 이니시스 TEST JS -->
 <!-- <script type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script> -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=SgnlyXnzstmDsYDhele7&submodules=panorama,geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2xo6ql0mva&submodules=panorama,geocoder"></script>
 <c:if test="${(debug eq 'on') || (env eq 'development')}">
 <script type="text/javascript" src="/resources/js/src/map/hotplace.js"></script>
 <script type="text/javascript" src="/resources/js/src/map/hotplace.maps.js"></script>
