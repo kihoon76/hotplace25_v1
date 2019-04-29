@@ -49,12 +49,13 @@
 			    },
 			    sorter:'number'
 		    },
-		    {title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter: true, 
+		    /*{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter: true, 
 		    	editor:_makeTabulatorFilterFromCode(_getBosangPyeonibCode()), editable:hotplace.dom.createTabulatorNoEdit,
 		    	formatter:function(cell) {
 			    	return hotplace.util.getBosangPyeonibGubunStr(cell.getValue());
 			    }
 		    },
+		    */
 		    {title:'주소', field:'address', align:'left', width:370, headerFilter:'input', headerFilterPlaceholder:'주소검색'},
 			{title:'위도', field:'lat', visible:false},
 			{title:'경도', field:'lng', visible: false}
@@ -70,9 +71,10 @@
 			},
 			{title:'HP등급', field:'hpGrade', align:'center', width:80},
 //			{title:'경공매 진행 여부', field:'gong', align:'center', width:120},
-			{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter:true,
+			/*{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter:true,
 				editor:_makeTabulatorFilterFromCode(hotplace.config.codes.bosangPyeonib)
 			},
+			*/
 //			{title:'등기사건', field:'deunggi', align:'center', width:80},
 			{title:'위도', field:'lat', visible:false},
 			{title:'경도', field:'lng', visible: false}
@@ -88,9 +90,10 @@
 			},
 			{title:'HP등급', field:'hpGrade', align:'center', width:80},
 //		        			{title:'경공매 진행 여부', field:'gong', align:'center', width:120},
-			{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter:true,
+			/*{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter:true,
 				editor:_makeTabulatorFilterFromCode(hotplace.config.codes.bosangPyeonib)
 			},
+			*/
 //			{title:'등기사건', field:'deunggi', align:'center', width:80},
 			{title:'위도', field:'lat', visible:false},
 			{title:'경도', field:'lng', visible: false}
@@ -115,12 +118,13 @@
 			    },
 			    sorter:'number'
 		    },
-			{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter: true, 
+			/*{title:'보상편입여부', field:'bosangPyeonib', align:'center', width:100, headerFilter: true, 
 		    	editor:_makeTabulatorFilterFromCode(_getBosangPyeonibCode()), editable:hotplace.dom.createTabulatorNoEdit,
 		    	formatter:function(cell) {
 			    	return hotplace.util.getBosangPyeonibGubunStr(cell.getValue());
 			    }
 		    },
+		    */
 			{ title:'주소', field:'address',   headerFilter:'input', headerFilterPlaceholder:'주소검색' },
 			{ title:'위도', field:'lat', visible: false },
 			{ title:'경도', field:'lng', visible: false },
@@ -493,7 +497,7 @@
 			param = {
 				'cityPlan':_getCheckboxesData('itemCityPlanTab01'),
 				'cityPlanState':_convertToYN(_getCheckboxesData('itemCityPlanStateTab01')),
-				'bosangPyeonib': _convertToYN(_getCheckboxesData('itemBosangPyeonibTab01')),
+				'bosangPyeonib': null, //_convertToYN(_getCheckboxesData('itemBosangPyeonibTab01')),
 				'jiyeog': _getJiyeokData($('#itemJiyeogTab01'), 'X'), //_getCheckboxesData('itemJiyeogTab01'),
 				'jimok':_getCheckboxesData('itemJimokTab01'),
 				'gongsi':_getCheckboxesData('itemGongsiTab01'),
@@ -535,7 +539,7 @@
 				'tojiUseLimitCancel':_getCheckboxesData('itemTojiUseLimitCancelTab03'),
 				'cityPlan':_getCheckboxesData('itemCityPlanTab03'),
 				'cityPlanState':_getCheckboxesData('itemCityPlanStateTab03'),
-				'bosangPyeonib':_getCheckboxesData('itemBosangPyeonibTab03'),
+				'bosangPyeonib':null,//_getCheckboxesData('itemBosangPyeonibTab03'),
 				'jiyeog':_getCheckboxesData('itemJiyeogTab03'),
 				'jimok':_getCheckboxesData('itemJimokTab03'),
 				'gongsi':_getCheckboxesData('itemGongsiTab03'),
@@ -1481,7 +1485,7 @@
 				'etcChamgo':_getCheckboxesData('itemGyeonggongEtcChamgo'),
 				'cityPlan':_getCheckboxesData('itemGyeonggongCityPlan'),
 				'cityPlanState':_convertToYN(_getCheckboxesData('itemGyeonggongCityPlanState')),
-				'bosangPyeonib': _convertToYN(_getCheckboxesData('itemGyeonggongBosangPyeonib')),
+				'bosangPyeonib':null,//_convertToYN(_getCheckboxesData('itemGyeonggongBosangPyeonib')),
 				'hpGrade': null, //_getReverseMinMax(hotplace.dom.getSliderValues(_gyeonggongSearchMenu, _gyeonggongHpGrade.substring(1))),
 				'envGrade': null, //_getReverseMinMax(hotplace.dom.getSliderValues(_gyeonggongSearchMenu, _gyeonggongEnvGrade.substring(1))),
 				'tojiUseLimitCancel': null, //_getCheckboxesData('itemGyeonggongTojiUseLimitCancel')
