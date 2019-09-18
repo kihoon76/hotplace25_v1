@@ -235,7 +235,7 @@
 <script type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
 <!-- 이니시스 TEST JS -->
 <!-- <script type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script> -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2xo6ql0mva&submodules=panorama,geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=47cz2gnbii&submodules=panorama,geocoder"></script>
 <c:if test="${(debug eq 'on') || (env eq 'development')}">
 <script type="text/javascript" src="/resources/js/src/map/hotplace.js"></script>
 <script type="text/javascript" src="/resources/js/src/map/hotplace.maps.js"></script>
