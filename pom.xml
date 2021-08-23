@@ -31,7 +31,7 @@
 		<chartjs-version>2.5.0</chartjs-version>
 		<jquery.ui-version>1.12.0</jquery.ui-version>
 		<itext.pdf-version>5.5.8</itext.pdf-version>
-		<jsoup-version>1.10.2</jsoup-version>
+		<jsoup-version>1.14.2</jsoup-version>
 		
 		<spring.rabbit-version>2.0.0.RELEASE</spring.rabbit-version>
 		<finalName>hotplace25-${project.version}</finalName>
